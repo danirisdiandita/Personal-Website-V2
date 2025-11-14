@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-start justify-center bg-[#f5f5f0] px-4 py-12 font-sans">
-      <main className="relative w-full max-w-3xl bg-[#ffeb3b] border-[3px] border-black rounded-3xl p-8 sm:p-10 shadow-[10px_10px_0_0_rgba(0,0,0,1)]">
+    <div className="flex min-h-screen items-start justify-center bg-[#B9F8FE] px-4 py-12 font-sans">
+      <main className="relative w-full max-w-3xl bg-[#A8B4F6] border-[3px] border-black rounded-3xl p-8 sm:p-10 shadow-[10px_10px_0_0_rgba(0,0,0,1)]">
         <div className="absolute -top-4 -left-4 h-6 w-24 bg-black text-xs font-bold uppercase tracking-widest text-[#ffeb3b] flex items-center justify-center shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
           Profile
         </div>
