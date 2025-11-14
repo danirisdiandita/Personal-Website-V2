@@ -1,11 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "./projects/data";
+import { articles } from "./articles/data";
 
 export default function Home() {
-  const latest = [...projects]
+  const latestProjects = [...projects]
     .sort((a, b) => (a.date < b.date ? 1 : -1))
     .slice(0, 2);
+
+  const latestArticles = [...articles]
+    .sort((a, b) => (a.date < b.date ? 1 : -1))
+    .slice(0, 5);
 
   return (
     <div className="flex min-h-screen items-start justify-center bg-[#B9F8FE] px-4 py-12 font-sans">
@@ -85,7 +90,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
-            {latest.map((project) => (
+            {latestProjects.map((project) => (
               <div
                 key={project.slug}
                 className={`rounded-2xl border-[3px] border-black ${project.colorClass} p-4 shadow-[6px_6px_0_0_rgba(0,0,0,1)] flex flex-col gap-3`}
@@ -104,6 +109,51 @@ export default function Home() {
                   <p className="mt-1 text-xs text-black/80">{project.description}</p>
                 </div>
               </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="w-full max-w-3xl">
+          <div className="mb-4 flex items-baseline justify-between gap-4">
+            <h2 className="text-sm font-extrabold uppercase tracking-[0.25em] text-black">
+              Articles
+            </h2>
+            <Link
+              href="/articles"
+              className="text-xs font-semibold uppercase tracking-[0.2em] text-black underline underline-offset-4"
+            >
+              See more
+            </Link>
+          </div>
+
+          <div className="divide-y-2 divide-black/10 border-y-2 border-black/10 bg-white/40 rounded-3xl p-4 sm:p-6 border-[3px] border-black shadow-[6px_6px_0_0_rgba(0,0,0,1)]">
+            {latestArticles.map((article) => (
+              <article
+                key={article.slug}
+                className="grid gap-4 py-4 sm:grid-cols-[minmax(120px,160px)_1fr] sm:gap-8"
+              >
+                <time className="text-[11px] font-semibold uppercase tracking-[0.2em] text-black/70">
+                  {new Date(article.date).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </time>
+                <div>
+                  <h3 className="text-sm sm:text-base font-bold text-black">
+                    {article.title}
+                  </h3>
+                  <p className="mt-1 text-xs sm:text-sm text-black/80">
+                    {article.description}
+                  </p>
+                  <Link
+                    href={`/articles/${article.slug}`}
+                    className="mt-2 inline-flex items-center text-[11px] font-semibold uppercase tracking-[0.2em] text-black underline underline-offset-4"
+                  >
+                    Read article
+                  </Link>
+                </div>
+              </article>
             ))}
           </div>
         </section>
