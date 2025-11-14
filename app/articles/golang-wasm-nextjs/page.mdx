@@ -1,0 +1,207 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+// import designSystem from './nggakgitu_browser.png'
+
+export const article = {
+  author: 'Norma Dani Risdiandita',
+  date: '2024-11-02',
+  title: 'Quick Start - Running Go code to WebAssembly (WASM) in Next.js',
+  description:
+    'Learn how to run Go code to WebAssembly (WASM) in Next.js.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+I recently need to run Go code to WebAssembly (WASM) in Next.js. I found it a little different from running C/C++ code to WASM in Next.js using Emscripten. So I decided to write this article to help you get started with Go code to WASM in Next.js.
+
+## Prerequisite
+
+
+First of all, you need to install Go. You can download it [here](https://go.dev/dl/). And better if you use the latest version. 
+
+You can also install tinygo. Tinygo is a compiler for Go that allows you to compile Go code to WebAssembly (WASM). You can install it [here](https://tinygo.org/getting-started/install/).
+
+Then you need start Next.js project (with nodejs and npm installed).
+
+```bash
+npx create-next-app@latest
+```
+
+and from `src/app/page.tsx` file, delete everything inside `<main>` tag and replace it with `<h1>Hello World</h1>`.
+
+```tsx
+'use client'
+
+export default function Home() {
+  return <h1>Hello World</h1>
+}
+```
+You can see the result of this code in the browser by running `npm run dev` command. Go to `http://localhost:3000` in your browser. and you'll see `Hello World` text.
+
+
+## Write Simple Go Code
+
+write simple Go code in `main.go` file.
+
+```go
+package main
+
+import (
+	"syscall/js"
+)
+
+// Export an add function to JavaScript
+func adder(this js.Value, p []js.Value) interface{} {
+	// Get the two numbers from parameters
+	a := p[0].Int()
+	b := p[1].Int()
+
+	// Add them and return result
+	sum := a + b
+	return js.ValueOf(sum)
+}
+
+func main() {
+	// Export the "adder" function to JavaScript
+	js.Global().Set("adder", js.FuncOf(adder))
+
+	// Keep the Go program running
+	select {}
+}
+
+```
+
+This code is a simple function that takes two integers as input and returns their sum. 
+
+## Compile Go code to WebAssembly (WASM)
+
+To compile Go code to WebAssembly (WASM), in your root directory, create a `build.sh` file and add this code:
+
+```bash
+#!/bin/bash
+go mod init nextjs-wasm
+tinygo build -o adder.wasm -target wasm adder.go
+cp $(tinygo env TINYGOROOT)/targets/wasm_exec.js .
+```
+
+Here is the explanation of the build script:
+
+- `go mod init nextjs-wasm`: Initialize a new Go module.
+- `tinygo build -o adder.wasm -target wasm adder.go`: Compile the Go code to WebAssembly (WASM) and save it as `adder.wasm`.
+- `cp $(tinygo env TINYGOROOT)/targets/wasm_exec.js .`: Copy the `wasm_exec.js` file to the current directory. This file is required by the browser to run the WASM module.
+
+After you have created the `build.sh` file, you can give permission to execute it by typing `chmod +x build.sh` in your terminal. Then you can run it by typing `./build.sh` in your terminal.
+
+From the build process, you'll see two files: `adder.wasm` and `wasm_exec.js`. Copy these two files to the `public` directory.
+
+```bash
+
+mkdir -p public
+cp adder.wasm public/
+cp wasm_exec.js public/
+```
+
+Warning: Make sure that the `public` directory is in the root directory of your project.
+
+## Integrating WASM in Next.js
+
+in the `src/app/page.tsx` file, you can write the code below:
+
+```tsx
+"use client";
+
+import React from "react";
+import { useState, useEffect } from "react";
+
+interface NumberValue {
+  a: number;
+  b: number;
+}
+
+const WASMGolang = () => {
+  const [numbers, setNumbers] = useState<NumberValue>({ a: 0, b: 0 });
+  const [results, setResults] = useState(0);
+
+  const handleAdd = () => {
+    const res = (window as any).adder(numbers.a, numbers.b);
+    console.log("res", res);
+    setResults(res);
+  };
+
+  useEffect(() => {
+    // dynamic imports
+
+    async function loadWasm() {
+      if (typeof window !== "undefined") {
+        const wasmExec = document.createElement('script');
+        wasmExec.src = '/wasm_exec.js'; // Place wasm_exec.js in your public folder
+        wasmExec.async = true;
+        
+        await new Promise((resolve) => {
+          wasmExec.onload = resolve;
+          document.head.appendChild(wasmExec);
+        });
+
+        const go = new (window as any).Go();
+        WebAssembly.instantiateStreaming(fetch("/adder.wasm"), go.importObject).then((result) => {
+          go.run(result.instance);
+        });
+      }
+    }
+
+    loadWasm();
+  }, []);
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <h1 className="text-2xl font-bold text-center text-black">
+        WASM Addition in Next.js
+      </h1>
+      <div className="p-8 bg-white rounded-lg shadow-md">
+        <div className="mb-4 space-y-4">
+          <input
+            type="number"
+            value={numbers.a}
+            onChange={(e) =>
+              setNumbers({ ...numbers, a: parseInt(e.target.value) })
+            }
+            className="w-full px-4 py-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <input
+            type="number"
+            value={numbers.b}
+            onChange={(e) =>
+              setNumbers({ ...numbers, b: parseInt(e.target.value) })
+            }
+            className="w-full px-4 py-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <button
+          onClick={handleAdd}
+          className="w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        >
+          Add
+        </button>
+        <p className="mt-4 text-xl font-semibold text-center text-black">
+          Result: <span className="text-blue-600">{results}</span>
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default WASMGolang;
+
+
+```
+
+repo link https://github.com/danirisdiandita/nextjs-wasm-quickstart
+
+
+![WASM Addition in Next.js](https://raw.githubusercontent.com/danirisdiandita/nextjs-wasm-quickstart/refs/heads/main/in-action.gif)
+
+
+

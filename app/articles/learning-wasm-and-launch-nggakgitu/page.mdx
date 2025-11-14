@@ -1,0 +1,33 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import designSystem from './nggakgitu_browser.png'
+
+export const article = {
+  author: 'Norma Dani Risdiandita',
+  date: '2024-10-11',
+  title: 'Learning WebAssembly and Launching FastPDF.net',
+  description:
+    'FastPDF.net is a website that allows you convert file, merge pdf, and do some more stuff and doing it privately in your browser powered by WebAssembly.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+I've recently discovered how powerful WebAssembly (WASM) is and how it enables running complex computations directly in the browser. I was especially impressed when I learned that FFmpeg can run in the browser using WASM. Since I'm still new to WASM, I'm constantly learning new things about it. To put my knowledge into practice, I built a simple website that allows users to convert files, merge PDFs, and perform other tasks—all done privately in the browser without uploading anything to a server.
+so I launched https://fastpdf.net.
+
+<Image src={designSystem} alt="" />
+
+Currently, I started the website with few simple tools and will add more tools in the future:
+
+- PDF Merger (https://fastpdf.net/pdf-merger)
+- PDF Splitter (https://fastpdf.net/pdf-split)
+- Image Converter (https://fastpdf.net/image/file-conversion/jpeg-converter)
+- Video Converter (https://fastpdf.net/video/file-conversion/mp4-converter)
+- Audio Converter (https://fastpdf.net/audio/file-conversion/mp3-converter)
+
+Anyone can use this website for free. And If you want to support me, you can suggest a feature or tools that you want to see in this website by filing a form in my website.
+

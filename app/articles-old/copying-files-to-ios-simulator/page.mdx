@@ -1,0 +1,35 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Norma Dani Risdiandita',
+  date: '2025-08-23',
+  title: 'Copying Files to iOS Simulator',
+  description:
+    'Copying files to iOS Simulator. I found it hard to find the right tutorial for copying files to iOS Simulator. So I decided to write this article to help you get started with copying files to iOS Simulator.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+One Day, I try to test to upload a file to my app on iOS Simulator, I kept failing to send the file within my local folder to the iOS Simulator. That file is an 'mp3 file'.
+
+Several things I try:
+
+1. Drag and drop attempt failed as this method only works for certain file types like photos and documents. Strangely, when attempting to drag an mp3 file to the simulator, it inexplicably triggered the "Messaging" app instead of properly transferring the file.
+2. Using `xcrun simctl addmedia booted audio.mp3`. it doesn't work for mp3 file and shows me error like below 
+```
+dani@Normas-MacBook-Air-2 MP3 % xcrun simctl addmedia booted  meeting_marketing.mp3 
+Failed to import '/Users/dani/Downloads/MP3/meeting_marketing.mp3', error [NSPOSIXErrorDomain] 22: The operation couldn’t be completed. File type unsupported.
+
+An error was encountered processing the command (domain=com.apple.CoreSimulator.LaunchdSimError, code=133):
+Multiple errors were returned; see stderr
+```
+3. Attempting to access the file via Safari in the simulator (by serving it using `python -m http.server`). While this made the mp3 file playable within the browser, it didn't actually download it to the simulator's file system for use in other apps.
+
+
+The only solution that worked was to compress the file into a ZIP archive, then drag and drop it from my Mac to the simulator. After that, I could extract the contents using the Files app within the simulator. Hope it helps.
+

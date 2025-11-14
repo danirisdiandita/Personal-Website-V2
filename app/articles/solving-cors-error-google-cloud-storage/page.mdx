@@ -1,0 +1,70 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import corsErrorImage from './Cors-error.png'
+export const article = {
+  author: 'Norma Dani Risdiandita',
+  date: '2024-10-11',
+  title: 'Solving Cors Error When Accessing Google Cloud Storage',
+  description:
+    'When you try to access a file from Google Cloud Storage, you might encounter a Cors error. This is because the browser is blocking the request due to security reasons. In this article, we will explore how to solve this problem.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+
+When working with Google Cloud Storage, you may encounter Cross-Origin Resource Sharing (CORS) errors when trying to access files from a different domain. This can be frustrating, especially when you're developing web applications that need to fetch resources from your Google Cloud Storage bucket. In this article, we'll explore how to solve CORS errors and configure your bucket to allow cross-origin requests.
+
+<Image src={corsErrorImage} alt="CORS error" />
+
+<figcaption>Note: The image above illustrates a typical CORS error message that you might encounter when trying to access resources from a different domain. This error occurs in the browser's console and indicates that the request was blocked due to CORS policy restrictions.</figcaption>
+
+
+## Understanding CORS
+
+CORS is a security mechanism implemented by web browsers to restrict web pages from making requests to a different domain than the one serving the web page. This is a crucial security feature, but it can sometimes interfere with legitimate use cases, such as accessing resources from a Google Cloud Storage bucket.
+
+## Checking Current CORS Configuration
+
+Before making any changes, it's a good idea to check the current CORS configuration of your bucket. You can do this using the `gsutil` command-line tool:
+
+
+```
+gsutil cors get gs://BUCKET_NAME
+```
+default output will be like this:
+
+```
+gs://BUCKET_NAME/ has no CORS configuration.
+```
+
+to allow your website (example.com) to access the resources in your bucket, you need to set the CORS configuration by creating a json file, for example `cors-file.json` and add the following configuration:
+
+```
+[
+  {
+    "maxAgeSeconds": 3600,
+    "method": ["GET", "POST", "PUT", "HEAD", "DELETE"],
+    "origin": ["http://localhost:3000", "https://example.com"],
+    "responseHeader": ["Content-Type", "Authorization", "ETag"]
+  }
+]
+
+```
+
+you can change the method, origin, and response header to your needs. then run the following command to set the CORS configuration:
+```
+gsutil cors set cors-file.json gs://BUCKET_NAME
+```
+
+the output will be like this:
+
+```
+Setting CORS on gs://BUCKET_NAME/...
+```
+
+Then your bucket is ready to accept cross-origin requests from your website.
+
