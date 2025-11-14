@@ -1,7 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import { projects } from "./projects/data";
 
 export default function Home() {
+  const latest = [...projects]
+    .sort((a, b) => (a.date < b.date ? 1 : -1))
+    .slice(0, 2);
+
   return (
     <div className="flex min-h-screen items-start justify-center bg-[#B9F8FE] px-4 py-12 font-sans">
       <div className="flex flex-col items-center justify-start gap-8 mb-11">
@@ -68,63 +73,38 @@ export default function Home() {
         </div>
 
         <section className="w-full max-w-3xl">
-          <h2 className="mb-4 text-sm font-extrabold uppercase tracking-[0.25em] text-black">
-            Projects
-          </h2>
+          <div className="mb-4 flex items-baseline justify-between gap-4">
+            <h2 className="text-sm font-extrabold uppercase tracking-[0.25em] text-black">
+              Things I've Built & Led
+            </h2>
+            <Link
+              href="/projects"
+              className="text-xs font-semibold uppercase tracking-[0.2em] text-black underline underline-offset-4"
+            >
+              See more
+            </Link>
+          </div>
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-2xl border-[3px] border-black bg-[#FFB4C8] p-4 shadow-[6px_6px_0_0_rgba(0,0,0,1)] flex flex-col gap-3">
-              <div className="overflow-hidden rounded-xl border-[3px] border-black bg-white shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
-                <Image
-                  src="/projects/personal-website.png"
-                  alt="Screenshot of personal website"
-                  width={640}
-                  height={360}
-                  className="h-40 w-full object-cover"
-                />
+            {latest.map((project) => (
+              <div
+                key={project.slug}
+                className={`rounded-2xl border-[3px] border-black ${project.colorClass} p-4 shadow-[6px_6px_0_0_rgba(0,0,0,1)] flex flex-col gap-3`}
+              >
+                <div className="overflow-hidden rounded-xl border-[3px] border-black bg-white shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={640}
+                    height={360}
+                    className="h-40 w-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-black">{project.title}</h3>
+                  <p className="mt-1 text-xs text-black/80">{project.description}</p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-base font-bold text-black">Personal Website</h3>
-                <p className="mt-1 text-xs text-black/80">
-                  The site you are looking at right now. Built with Next.js and a playful neobrutalist design.
-                </p>
-              </div>
-            </div>
-
-            <div className="rounded-2xl border-[3px] border-black bg-[#FFE59D] p-4 shadow-[6px_6px_0_0_rgba(0,0,0,1)] flex flex-col gap-3">
-              <div className="overflow-hidden rounded-xl border-[3px] border-black bg-white shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
-                <Image
-                  src="/projects/content-hub.png"
-                  alt="Screenshot of content hub"
-                  width={640}
-                  height={360}
-                  className="h-40 w-full object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="text-base font-bold text-black">Content Hub</h3>
-                <p className="mt-1 text-xs text-black/80">
-                  A collection of articles and notes about web development, engineering practices, and AI.
-                </p>
-              </div>
-            </div>
-
-            <div className="rounded-2xl border-[3px] border-black bg-[#C4F4D2] p-4 shadow-[6px_6px_0_0_rgba(0,0,0,1)] sm:col-span-2 flex flex-col gap-3">
-              <div className="overflow-hidden rounded-xl border-[3px] border-black bg-white shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
-                <Image
-                  src="/projects/experiments.png"
-                  alt="Screenshot of experiments project"
-                  width={640}
-                  height={360}
-                  className="h-40 w-full object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="text-base font-bold text-black">Experiments</h3>
-                <p className="mt-1 text-xs text-black/80">
-                  Small tools, prototypes, and weekend projects where you try new ideas and technologies.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </section>
       </div>
