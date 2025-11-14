@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { articles } from "./data";
+// import { articles } from "./data";
+import { getAllArticles } from "@/lib/articles";
 
 const formatDate = (iso: string) =>
   new Date(iso).toLocaleDateString("en-US", {
@@ -8,7 +9,8 @@ const formatDate = (iso: string) =>
     day: "numeric",
   });
 
-export default function ArticlesPage() {
+export default async function ArticlesPage() {
+  let articles = await getAllArticles()
   const sorted = [...articles].sort((a, b) => (a.date < b.date ? 1 : -1));
 
   return (
