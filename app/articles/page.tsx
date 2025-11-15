@@ -1,17 +1,16 @@
-import Link from "next/link";
-// import { articles } from "./data";
-import { getAllArticles } from "@/lib/articles";
+import Link from 'next/link'
+import { getAllArticles } from '@/lib/articles'
 
 const formatDate = (iso: string) =>
-  new Date(iso).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  new Date(iso).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
 
 export default async function ArticlesPage() {
   let articles = await getAllArticles()
-  const sorted = [...articles].sort((a, b) => (a.date < b.date ? 1 : -1));
+  let sorted = [...articles].sort((a, b) => (a.date < b.date ? 1 : -1))
 
   return (
     <div className="flex min-h-screen items-start justify-center bg-[#B9F8FE] px-4 py-12 font-sans">
@@ -25,20 +24,20 @@ export default async function ArticlesPage() {
           </p>
         </header>
 
-        <section className="divide-y-2 divide-black/10 border-y-2 border-black/10">
+        <section className="divide-y-2 divide-black/10 border-y-2 border-black/10 bg-white/40 rounded-3xl p-4 sm:p-6 border-[3px] border-black shadow-[6px_6px_0_0_rgba(0,0,0,1)]">
           {sorted.map((article) => (
             <article
               key={article.slug}
-              className="grid gap-4 py-6 sm:grid-cols-[minmax(120px,160px)_1fr] sm:gap-8"
+              className="grid gap-4 py-4 sm:grid-cols-[minmax(120px,160px)_1fr] sm:gap-8"
             >
               <time
-                className="text-xs font-semibold uppercase tracking-[0.2em] text-black/70"
+                className="text-[11px] font-semibold uppercase tracking-[0.2em] text-black/70"
                 dateTime={article.date}
               >
                 {formatDate(article.date)}
               </time>
               <div>
-                <h2 className="text-base sm:text-lg font-bold text-black">
+                <h2 className="text-sm sm:text-base font-bold text-black">
                   {article.title}
                 </h2>
                 <p className="mt-1 text-xs sm:text-sm text-black/80">
@@ -46,7 +45,7 @@ export default async function ArticlesPage() {
                 </p>
                 <Link
                   href={`/articles/${article.slug}`}
-                  className="mt-3 inline-flex items-center text-xs font-semibold uppercase tracking-[0.2em] text-black underline underline-offset-4"
+                  className="mt-2 inline-flex items-center text-[11px] font-semibold uppercase tracking-[0.2em] text-black underline underline-offset-4"
                 >
                   Read article
                 </Link>
@@ -54,16 +53,7 @@ export default async function ArticlesPage() {
             </article>
           ))}
         </section>
-
-        <div>
-          <Link
-            href="/"
-            className="inline-block rounded-full border-[3px] border-black bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black shadow-[4px_4px_0_0_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:translate-x-0.5 transition-transform"
-          >
-            Back to home
-          </Link>
-        </div>
       </div>
     </div>
-  );
+  )
 }
