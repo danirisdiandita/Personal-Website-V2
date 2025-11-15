@@ -5,7 +5,7 @@ import { getAllArticles } from "@/lib/articles";
 
 export default async function Home() {
   const latestProjects = [...projects]
-    .sort((a, b) => (a.date < b.date ? 1 : -1))
+    .sort((a, b) => (a.year < b.year ? 1 : -1))
     .slice(0, 2);
 
   const articles = await getAllArticles();
@@ -90,24 +90,40 @@ export default async function Home() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {latestProjects.map((project) => (
-              <div
+              <Link
                 key={project.slug}
-                className={`rounded-2xl border-[3px] border-black ${project.colorClass} p-4 shadow-[6px_6px_0_0_rgba(0,0,0,1)] flex flex-col gap-3`}
+                href="/projects"
+                className={`rounded-2xl border-[3px] border-black ${project.colorClass} p-4 shadow-[6px_6px_0_0_rgba(0,0,0,1)] flex flex-col gap-3 hover:-translate-y-1 hover:shadow-[8px_8px_0_0_rgba(0,0,0,1)] transition-all`}
               >
-                <div className="overflow-hidden rounded-xl border-[3px] border-black bg-white shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={640}
-                    height={360}
-                    className="h-40 w-full object-cover"
-                  />
+                <div className="flex items-start justify-between gap-2">
+                  <h3 className="text-base font-bold text-black leading-tight">{project.title}</h3>
+                  <span
+                    className={`shrink-0 rounded-full border-2 border-black px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
+                      project.status === 'Running'
+                        ? 'bg-[#C9F0DD] text-black'
+                        : 'bg-white text-black/60'
+                    }`}
+                  >
+                    {project.status}
+                  </span>
                 </div>
-                <div>
-                  <h3 className="text-base font-bold text-black">{project.title}</h3>
-                  <p className="mt-1 text-xs text-black/80">{project.description}</p>
+                <p className="mt-1 text-xs text-black/80 leading-relaxed">{project.description}</p>
+                <div className="flex flex-wrap gap-1.5 mt-auto">
+                  {project.techStack.slice(0, 3).map((tech, idx) => (
+                    <span
+                      key={idx}
+                      className="inline-block rounded-md border border-black/20 bg-white/60 px-2 py-0.5 text-[10px] font-medium text-black"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                  {project.techStack.length > 3 && (
+                    <span className="inline-block rounded-md border border-black/20 bg-white/60 px-2 py-0.5 text-[10px] font-medium text-black/60">
+                      +{project.techStack.length - 3}
+                    </span>
+                  )}
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </section>
