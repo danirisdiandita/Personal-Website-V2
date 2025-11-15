@@ -716,6 +716,13 @@
     padding: 0; /* let the pre control spacing */
 }
 
+.prose code {
+    background-color: #03515d; /* neon teal */
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    color: #ffffff;
+}
+
 .prose ol {
     list-style-type: decimal;
     list-style-position: outside;

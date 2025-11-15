@@ -6,7 +6,7 @@ export default function ProjectsPage() {
   const sorted = [...projects].sort((a, b) => (a.date < b.date ? 1 : -1));
 
   return (
-    <div className="flex min-h-screen items-start justify-center bg-[#B9F8FE] px-4 py-12 font-sans">
+    <div className="max-w-3xl mx-auto flex min-h-screen items-start justify-center bg-[#B9F8FE] px-4 py-12 font-sans">
       <div className="flex w-full max-w-5xl flex-col gap-8">
         <header>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-black">

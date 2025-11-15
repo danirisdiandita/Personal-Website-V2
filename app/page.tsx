@@ -39,7 +39,7 @@ export default function Home() {
                   Norma Dani Risdiandita
                 </h1>
                 <p className="mt-2 inline-block bg-black px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#ffeb3b] shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
-                  Software Engineer
+                  Software Engineer (AI, Web, Mobile)
                 </p>
               </div>
             </div>

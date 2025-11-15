@@ -14,7 +14,7 @@ export default async function ArticlesPage() {
 
   return (
     <div className="flex min-h-screen items-start justify-center bg-[#B9F8FE] px-4 py-12 font-sans">
-      <div className="flex w-full max-w-5xl flex-col gap-8">
+      <div className="flex w-full max-w-3xl flex-col gap-8">
         <header>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-black">
             Articles
