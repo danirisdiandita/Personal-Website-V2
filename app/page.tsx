@@ -17,9 +17,9 @@ export default async function Home() {
             Profile
           </div>
           <div className="flex flex-col gap-6 sm:gap-8">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+            <div className="flex flex-row gap-4 items-center">
               <div className="shrink-0">
-                <div className="relative h-40 w-40 overflow-hidden rounded-3xl border-[3px] border-black bg-white shadow-[6px_6px_0_0_rgba(0,0,0,1)]">
+                <div className="relative h-24 w-24 sm:h-40 sm:w-40 overflow-hidden rounded-3xl border-[3px] border-black bg-white shadow-[6px_6px_0_0_rgba(0,0,0,1)]">
                   <Image
                     src="/profile.jpeg"
                     alt="Profile picture"
@@ -32,10 +32,10 @@ export default async function Home() {
               </div>
 
               <div className="flex-1">
-                <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-black leading-tight">
+                <h1 className="text-xl sm:text-4xl font-extrabold tracking-tight text-black leading-tight">
                   Norma Dani Risdiandita
                 </h1>
-                <p className="mt-2 inline-block bg-black px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#ffeb3b] shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
+                <p className="mt-1 sm:mt-2 inline-block bg-black px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-[#ffeb3b] shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
                   Software Engineer (AI, Web, Mobile)
                 </p>
               </div>
