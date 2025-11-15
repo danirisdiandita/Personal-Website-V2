@@ -4,9 +4,7 @@ import { projects } from "./projects/data";
 import { getAllArticles } from "@/lib/articles";
 
 export default async function Home() {
-  const latestProjects = [...projects]
-    .sort((a, b) => (a.year < b.year ? 1 : -1))
-    .slice(0, 2);
+  const latestProjects = projects.slice(0, 2);
 
   const articles = await getAllArticles();
   const latestArticles = articles.slice(0, 5);
