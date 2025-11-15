@@ -706,4 +706,25 @@
 
 .prose pre {
     overflow-x: auto;
+    background-color: #03515d; /* neon teal */
+    color: #ffffff;
+    padding: 0.75rem; /* visible inner spacing for the neon box */
+}
+
+.prose pre code {
+    display: block;
+    padding: 0; /* let the pre control spacing */
+}
+
+.prose ol {
+    list-style-type: decimal;
+    list-style-position: outside;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+}
+
+.prose ol li {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
 }
