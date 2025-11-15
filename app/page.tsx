@@ -1,16 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "./projects/data";
-import { articles } from "./articles/data";
+import { getAllArticles } from "@/lib/articles";
 
-export default function Home() {
+export default async function Home() {
   const latestProjects = [...projects]
     .sort((a, b) => (a.date < b.date ? 1 : -1))
     .slice(0, 2);
 
-  const latestArticles = [...articles]
-    .sort((a, b) => (a.date < b.date ? 1 : -1))
-    .slice(0, 5);
+  const articles = await getAllArticles();
+  const latestArticles = articles.slice(0, 5);
 
   return (
     <div className="flex min-h-screen items-start justify-center bg-[#B9F8FE] px-4 py-12 font-sans">
