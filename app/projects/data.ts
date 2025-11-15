@@ -19,7 +19,7 @@ export const projects: Project[] = [
     domain: "notespark.id",
     status: "Running",
     techStack: ["Next.js", "Golang", "RAG", "Prompt Engineering", "React Native"],
-    userCount: "15 users",
+    userCount: "162 users",
     year: "2025",
     colorClass: "bg-[#A8B4F6]",
     role: "Solo Builder & Marketer"
