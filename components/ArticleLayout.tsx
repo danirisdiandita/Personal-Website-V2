@@ -50,13 +50,13 @@ export function ArticleLayout({
             <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight text-black">
               {article.title}
             </h1>
-            <time
-              dateTime={article.date}
-              className="mt-3 flex items-center text-xs font-semibold uppercase tracking-[0.2em] text-black/60"
-            >
-              <span className="h-4 w-0.5 rounded-full bg-black/40" />
-              <span className="ml-3">{formatDate(article.date)}</span>
-            </time>
+            <div className="mt-3 flex flex-wrap items-center text-xs font-semibold uppercase tracking-[0.2em] text-black/60">
+              <span>{article.author}</span>
+              <span className="mx-3 h-4 w-0.5 rounded-full bg-black/40" />
+              <time dateTime={article.date} className="flex items-center">
+                <span>{formatDate(article.date)}</span>
+              </time>
+            </div>
           </header>
           <Prose className="mt-6" data-mdx-content>
             {children}
