@@ -36,14 +36,14 @@ export default async function Home() {
                   Norma Dani Risdiandita
                 </h1>
                 <p className="mt-1 sm:mt-2 inline-block bg-black px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-[#ffeb3b] shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
-                  Software Engineer (AI, Web, Mobile)
+                  Software Engineer (Product, AI, Web, Mobile)
                 </p>
               </div>
             </div>
 
             <div className="rounded-2xl border-[3px] border-black bg-white p-4 text-sm sm:text-base leading-relaxed shadow-[6px_6px_0_0_rgba(0,0,0,1)]">
               <p>
-                I write about software engineering, web development, artificial intelligence, and other topics I find valuable. I build products and document my experiences along the way.
+                I write about software engineering, products building, web development, artificial intelligence, and other topics I find valuable. I build products and document my experiences along the way.
               </p>
             </div>
           </div>
