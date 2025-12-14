@@ -1,5 +1,6 @@
 import { ArticleLayout } from '@/components/ArticleLayout'
-
+import indexingImage from './indexing.webp'
+import answeringRagImage from './answering-rag.webp'
 export const article = {
   author: 'Norma Dani Risdiandita',
   date: '2025-12-15',
@@ -15,6 +16,40 @@ export const metadata = {
 
 export default (props) => <ArticleLayout article={article} {...props} />
 
-This is a place where I will write about my AI Powered Second Brain - Self Project. 
+I am trying to make this AI Powered Second Brain as a Self Project because I found it painful to track every project within Widya Group because I am handling 3 companies as VP of Technology. This is an ongoing project and I will update it as I progress. The technology I use 
 
-Coming Soon
+1. LEANN as lightweight vector indexing- https://github.com/yichuan-w/LEANN
+2. Megaparse as the miscellaneous document parser - https://github.com/quivrhq/megaparse
+3. Frontend and Backend using Next.js
+
+## 15 December 2025 - Designing the System
+
+I have designed the system to be simple and easy to use. The system will have 2 main features:
+
+1. Indexing
+
+<Image src={indexingImage} alt="" />
+
+For indexing it is simple, each company has its own indexing process. The steps are:
+
+- Which type of documents to index? if pdf, or txt, it is obvious to just index it to the leann. Or else, if the format is docx, we will use megaparse to parse it first and then index it to the leann.
+- Indexing the data
+- Save to the database through Prisma ORM within Next.js
+
+Once the indexing process is done, the data will be saved to the database and can be searched later.
+
+2. Searching
+
+Searching is pretty straightforward, we just ask through the dashboard by choosing which index to search and the question to ask. The index is by itself a grouping of the business process. In here I have 3 indexes:
+
+- Widya Wicara
+- Widya Robotics
+- Widya Security
+
+I separate it through the company I am working for. It is up to you, you can group it by the business process such as HR, Finance, etc. or the company I handle.
+
+<Image src={answeringRagImage} alt="" />
+
+
+
+## Coming Soon
