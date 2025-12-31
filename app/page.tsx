@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { projects } from "./projects/data";
+import { projects } from "./products/data";
 import { getAllArticles } from "@/lib/articles";
 
 export default async function Home() {
@@ -96,11 +96,10 @@ export default async function Home() {
                 <div className="flex items-start justify-between gap-2">
                   <h3 className="text-base font-bold text-black leading-tight">{project.title}</h3>
                   <span
-                    className={`shrink-0 rounded-full border-2 border-black px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
-                      project.status === 'Running'
+                    className={`shrink-0 rounded-full border-2 border-black px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${project.status === 'Running'
                         ? 'bg-[#C9F0DD] text-black'
                         : 'bg-white text-black/60'
-                    }`}
+                      }`}
                   >
                     {project.status}
                   </span>

@@ -8,20 +8,18 @@ const NavBar = () => {
   const pathname = usePathname()
 
   const isArticles = pathname === "/articles" || pathname.startsWith("/articles/")
-  const isProjects = pathname === "/projects" || pathname.startsWith("/projects/")
+  const isProducts = pathname === "/products" || pathname.startsWith("/products/")
 
   // Mobile: Simple stacked buttons style
   const mobileLinkClasses = (active: boolean) =>
-    `block w-full border-2 border-black py-3 text-center text-xs font-bold uppercase tracking-wider transition-all ${
-      active
-        ? 'bg-black text-[#ffeb3b] shadow-[4px_4px_0_0_rgba(0,0,0,1)]'
-        : 'bg-white text-black shadow-[2px_2px_0_0_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[1px_1px_0_0_rgba(0,0,0,1)]'
+    `block w-full border-2 border-black py-3 text-center text-xs font-bold uppercase tracking-wider transition-all ${active
+      ? 'bg-black text-[#ffeb3b] shadow-[4px_4px_0_0_rgba(0,0,0,1)]'
+      : 'bg-white text-black shadow-[2px_2px_0_0_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[1px_1px_0_0_rgba(0,0,0,1)]'
     }`
 
   // Desktop: Original pill style
   const desktopLinkClasses = (active: boolean) =>
-    `inline-flex items-center justify-center rounded-full border-2 border-black px-4 py-2 text-center shadow-[3px_3px_0_0_rgba(0,0,0,1)] transition-transform hover:-translate-y-0.5 hover:translate-x-0.5 ${
-      active ? 'bg-black text-[#ffeb3b]' : 'bg-white text-black'
+    `inline-flex items-center justify-center rounded-full border-2 border-black px-4 py-2 text-center shadow-[3px_3px_0_0_rgba(0,0,0,1)] transition-transform hover:-translate-y-0.5 hover:translate-x-0.5 ${active ? 'bg-black text-[#ffeb3b]' : 'bg-white text-black'
     }`
 
   return (
@@ -34,8 +32,8 @@ const NavBar = () => {
         <Link href="/articles" className={mobileLinkClasses(isArticles)}>
           Articles
         </Link>
-        <Link href="/projects" className={mobileLinkClasses(isProjects)}>
-          Projects
+        <Link href="/products" className={mobileLinkClasses(isProducts)}>
+          Products
         </Link>
       </div>
 
@@ -57,8 +55,8 @@ const NavBar = () => {
               </Link>
             </li>
             <li>
-              <Link href="/projects" className={desktopLinkClasses(isProjects)}>
-                Projects
+              <Link href="/products" className={desktopLinkClasses(isProducts)}>
+                Products
               </Link>
             </li>
           </ul>

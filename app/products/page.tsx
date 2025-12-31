@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { projects } from "./data";
 
-export default function ProjectsPage() {
+export default function ProductsPage() {
   const sorted = [...projects].sort((a, b) => (a.year < b.year ? 1 : -1));
 
   return (
@@ -25,11 +25,10 @@ export default function ProjectsPage() {
               <div className="flex items-start justify-between gap-2">
                 <h2 className="text-base font-bold text-black leading-tight">{project.title}</h2>
                 <span
-                  className={`shrink-0 rounded-full border-2 border-black px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
-                    project.status === 'Running'
+                  className={`shrink-0 rounded-full border-2 border-black px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${project.status === 'Running'
                       ? 'bg-[#C9F0DD] text-black'
                       : 'bg-white text-black/60'
-                  }`}
+                    }`}
                 >
                   {project.status}
                 </span>
