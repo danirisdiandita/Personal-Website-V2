@@ -74,6 +74,40 @@ export default async function Home() {
           </div>
         </div>
 
+        <Link href="/experiences" className="block w-full max-w-3xl mb-6">
+          <div className="relative bg-[#FFE5B4] border-[3px] border-black rounded-2xl p-6 shadow-[6px_6px_0_0_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[8px_8px_0_0_rgba(0,0,0,1)] transition-all">
+            <div className="absolute -top-3 -right-3 h-8 w-8 bg-black rounded-full flex items-center justify-center shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
+              <span className="text-[#ffeb3b] text-lg">💼</span>
+            </div>
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex-1">
+                <h3 className="text-base font-bold text-black mb-1">
+                  Looking to hire?
+                </h3>
+                <p className="text-sm text-black/80 mb-2">
+                  I bring peace of mind to your projects—from building startup MVPs to maintaining large-scale applications.
+                </p>
+                <p className="text-sm text-black/80 mb-2">
+                  Currently available for full-time or part-time positions.
+                </p>
+                <div className="text-xs text-black/70">
+                  <span className="font-semibold">Actively looking for:</span>
+                  <ul className="mt-1 space-y-0.5 ml-4 list-disc">
+                    <li>Senior Software Engineer</li>
+                    <li>Full Stack Software Engineer</li>
+                    <li>AI Engineer</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="shrink-0">
+                <span className="inline-flex items-center text-xs font-semibold uppercase tracking-[0.15em] text-black">
+                  View →
+                </span>
+              </div>
+            </div>
+          </div>
+        </Link>
+
         <section className="w-full max-w-3xl">
           <div className="mb-4 flex items-baseline justify-between gap-4">
             <h2 className="text-sm font-extrabold uppercase tracking-[0.25em] text-black">
@@ -97,8 +131,8 @@ export default async function Home() {
                   <h3 className="text-base font-bold text-black leading-tight">{project.title}</h3>
                   <span
                     className={`shrink-0 rounded-full border-2 border-black px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${project.status === 'Running'
-                        ? 'bg-[#C9F0DD] text-black'
-                        : 'bg-white text-black/60'
+                      ? 'bg-[#C9F0DD] text-black'
+                      : 'bg-white text-black/60'
                       }`}
                   >
                     {project.status}
