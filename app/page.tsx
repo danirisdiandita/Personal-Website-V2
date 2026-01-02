@@ -74,39 +74,49 @@ export default async function Home() {
           </div>
         </div>
 
-        <Link href="/experiences" className="block w-full max-w-3xl mb-6">
-          <div className="relative bg-[#FFE5B4] border-[3px] border-black rounded-2xl p-6 shadow-[6px_6px_0_0_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[8px_8px_0_0_rgba(0,0,0,1)] transition-all">
-            <div className="absolute -top-3 -right-3 h-8 w-8 bg-black rounded-full flex items-center justify-center shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
-              <span className="text-[#ffeb3b] text-lg">💼</span>
-            </div>
-            <div className="flex items-center justify-between gap-4">
-              <div className="flex-1">
-                <h3 className="text-base font-bold text-black mb-1">
-                  Looking to hire?
-                </h3>
-                <p className="text-sm text-black/80 mb-2">
-                  I bring peace of mind to your projects—from building startup MVPs to maintaining large-scale applications.
-                </p>
-                <p className="text-sm text-black/80 mb-2">
-                  Currently available for full-time or part-time positions.
-                </p>
-                <div className="text-xs text-black/70">
-                  <span className="font-semibold">Actively looking for:</span>
-                  <ul className="mt-1 space-y-0.5 ml-4 list-disc">
-                    <li>Senior Software Engineer</li>
-                    <li>Full Stack Software Engineer</li>
-                    <li>AI Engineer</li>
-                  </ul>
+        <section className="w-full max-w-3xl">
+          <div className="mb-4 flex items-baseline justify-between gap-4">
+            <h2 className="text-sm font-extrabold uppercase tracking-[0.25em] text-black">
+              Looking to hire?
+            </h2>
+            <Link
+              href="/experiences"
+              className="text-xs font-semibold uppercase tracking-[0.2em] text-black underline underline-offset-4"
+            >
+              View details
+            </Link>
+          </div>
+          <Link href="/experiences" className="block w-full">
+            <div className="relative bg-[#FFE5B4] border-[3px] border-black rounded-2xl p-6 shadow-[6px_6px_0_0_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[8px_8px_0_0_rgba(0,0,0,1)] transition-all">
+              <div className="absolute -top-3 -right-3 h-8 w-8 bg-black rounded-full flex items-center justify-center shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
+                <span className="text-[#ffeb3b] text-lg">💼</span>
+              </div>
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex-1">
+                  <p className="text-sm text-black/80 mb-2">
+                    I bring peace of mind to your projects—from building startup MVPs to maintaining large-scale applications.
+                  </p>
+                  <p className="text-sm text-black/80 mb-2">
+                    Currently available for full-time or part-time positions.
+                  </p>
+                  <div className="text-xs text-black/70">
+                    <span className="font-semibold">Actively looking for:</span>
+                    <ul className="mt-1 space-y-0.5 ml-4 list-disc">
+                      <li>Senior Software Engineer</li>
+                      <li>Full Stack Software Engineer</li>
+                      <li>AI Engineer</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="shrink-0">
+                  <span className="inline-flex items-center text-xs font-semibold uppercase tracking-[0.15em] text-black">
+                    View →
+                  </span>
                 </div>
               </div>
-              <div className="shrink-0">
-                <span className="inline-flex items-center text-xs font-semibold uppercase tracking-[0.15em] text-black">
-                  View →
-                </span>
-              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </section>
 
         <section className="w-full max-w-3xl">
           <div className="mb-4 flex items-baseline justify-between gap-4">
