@@ -141,7 +141,7 @@ export const downloadCVPdf = async () => {
                 ))}
 
                 {/* Technical Skills */}
-                <Text style={styles.heading} break>Technical Skills</Text>
+                <Text style={styles.heading}>Technical Skills</Text>
                 {CVData.skills.map((skill, index) => (
                     <View key={index} style={styles.skillSection}>
                         <Text style={styles.skillItems}>

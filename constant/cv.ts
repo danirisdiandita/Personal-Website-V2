@@ -1,31 +1,32 @@
 export const CVData = {
     personalInfo: {
         name: "Norma Dani Risdiandita",
-        title: "Engineering Leader | AI & Full Stack | MSc Computational Physics",
-        summary: "Engineering Leader with 6+ years of experience in Software Engineering, Artificial Intelligence, and Full Stack Development. Proven ability to design and deliver scalable products, lead cross-functional teams, and deploy AI-driven solutions into production."
+        title: "Senior Software Engineer",
+        summary: "Senior Software Engineer with 6+ years of experience in Full Stack Development and Artificial Intelligence. Proven ability to lead cross-functional teams and design scalable, production-grade systems."
     },
     experiences: [
         {
-            title: 'CTO',
+            title: 'Senior Software Engineer (Founding Engineer) - CTO',
             company: 'Widya Wicara',
             period: 'May 2022 – Present',
             icon: '🚀',
             highlights: [
-                'Architected and launched products with large user bases: Transkripsi.id (59K+ users) and Widya Notulensi (15K+ users)',
-                'Built technologies for real-time transcription, summarization, secure data handling, and diarization at scale with GDPR compliant, SOC2, and ISO 27001 infrastructure',
-                'Led development of an AI-powered video editor with generative avatars and cloud rendering engine',
-                'Hands on working on AI Automations: SEO friendly articles generators with AI, TikTok Content Creation Automation (Photos / Carousels)',
-                'Mentoring, Collaborating, and setting the hiring standards for Junior to Senior technical employees'
+                'Architected and launched core products: Transkripsi.id (59K+ users) and Widya Notulensi (15K+ users), achieving 99.9% uptime',
+                'Built secure, scalable infrastructure for real-time transcription, and diarization, fully compliant with GDPR, SOC2, and ISO 27001 standards',
+                'Designed and implemented bot integrations for Zoom, Google Meet, and MS Teams, solving cold-start issues with Kubernetes and optimizing costs by migrating to Cloud Run Jobs',
+                'Led the development of an AI-powered video editor, integrating generative avatars and a custom cloud rendering engine',
+                'Developed AI automation tools for SEO content generation and social media content creation (TikTok/Instagram)',
+                'Managing the engineering team from 3 to 15 members, establishing hiring standards and mentoring junior to senior engineers'
             ]
         },
         {
-            title: 'VP of Technology',
+            title: 'VP of Technology - Fractional CTO',
             company: 'Widya Robotics',
             period: 'Jan 2025 – Present',
             icon: '🤖',
             highlights: [
-                'Led Vehicle Counting & Classification system for harbor operations',
-                'Guided Fertilizer Bag Counting AI project from concept to deployment',
+                'Contributing to a system for Vehicle Counting & Classification system for harbor operations and guiding AI engineer, Dataset engineer, and Full Stack engineer for the implementation from software architecture, AI model, datasets, and deployment. Handling the detection of thousands of vehicles per day with real-time processing',
+                'Guided and designed the system for Fertilizer Bag Counting AI project from concept to deployment and guiding AI engineer, Dataset engineer, and Full Stack engineer for the implementation from software architecture, AI model, datasets, and deployment. Handling the detection of thousands of fertilizer bags per day with real-time processing',
                 'Mentored teams and collaborating across AI, full-stack development, datasets, and PM functions'
             ]
         },
@@ -35,13 +36,13 @@ export const CVData = {
             period: '2022 – Present',
             icon: '💡',
             highlights: [
-                'Notespark.id: AI-powered study companion (LLM, RAG, Next.js, Golang, React Native)',
-                'FastPDF.net: WASM-based all-in-one PDF & file conversion tools',
+                'Notespark.id: AI-powered study companion (LLM, RAG, Next.js, Golang, React Native) - Currently around 270 users - will be doing some marketing for hundred of thousands users',
+                'FastPDF.net / https://nggakgitu.vercel.app: WASM-based all-in-one PDF & file conversion tools - fully client side PDF tools',
                 'Built & maintained a medical SaaS product used by a clinic for 2+ years'
             ]
         },
         {
-            title: 'Co-Founder & CTO',
+            title: 'Senior Software Engineer / Founding Engineer / Co-Founder',
             company: 'INFIDEA.ID',
             period: 'Dec 2020 – 2024',
             icon: '🏢',
@@ -49,7 +50,7 @@ export const CVData = {
                 'Delivered AI/ML, optimization, and SaaS projects across industries',
                 'MillionRobo: Auto-trading platform (websocket, pubsub)',
                 'NextSci: Optimization algorithms for routing, bin packing, and scheduling',
-                'Delivered ML features including Text-to-Speech, Object Detection, OCR, and Crowd Counting'
+                'Delivered ML features including Text-to-Speech, Object Detection, OCR, and Crowd Counting as projects for Telco company'
             ]
         },
         {
@@ -101,12 +102,12 @@ export const CVData = {
     ],
     skills: [
         { category: 'Backend & APIs', items: 'REST, Gin, Flask, FastAPI, NestJS, scalable microservices' },
-        { category: 'Cloud & Infra', items: 'AWS, GCP, Kubernetes, Docker, Cloud Run, Lambda' },
+        { category: 'Cloud & Infra', items: 'AWS, GCP, Kubernetes, Docker, Cloud Run, AWS Lambda' },
         { category: 'Databases', items: 'SQL, BigQuery' },
         { category: 'DevOps', items: 'CI/CD with GitHub Actions, GitLab CI' },
         { category: 'AI/ML', items: 'RAG, NLP, Computer Vision (CV), Generative AI, full ML lifecycle deployment' },
         { category: 'Frontend & Mobile', items: 'React, React Native, Next.js' },
-        { category: 'Languages', items: 'Python, Go, JavaScript/TypeScript, Node.js, C/C++, R, MATLAB, Fortran' },
+        { category: 'Languages', items: 'Python, Go, JavaScript/TypeScript, Node.js, C/C++, R' },
         { category: 'Leadership', items: 'Team coaching, mentoring, hiring, cross-functional collaboration' }
     ]
 }
