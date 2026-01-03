@@ -1,4 +1,7 @@
+
+import DownloadCV from '@/components/DownloadCV'
 import Link from 'next/link'
+import { CVData } from '@/constant/cv'
 
 interface ExperienceItemProps {
     title: string
@@ -40,106 +43,39 @@ function ExperienceItem({ title, company, period, highlights, icon }: Experience
 }
 
 export default function Experiences() {
-    const experiences = [
-        {
-            title: 'CTO',
-            company: 'Widya Wicara',
-            period: 'May 2022 – Present',
-            icon: '🚀',
-            highlights: [
-                'Architected and launched products with large user bases: Transkripsi.id (59K+ users) and Widya Notulensi (15K+ users)',
-                'Built technologies for real-time transcription, summarization, secure data handling, and diarization at scale with GDPR compliant, SOC2, and ISO 27001 infrastructure',
-                'Led development of an AI-powered video editor with generative avatars and cloud rendering engine',
-                'Hands on working on AI Automations: SEO friendly articles generators with AI, TikTok Content Creation Automation (Photos / Carousels)',
-                'Mentoring, Collaborating, and setting the hiring standards for Junior to Senior technical employees'
-            ]
-        },
-        {
-            title: 'VP of Technology',
-            company: 'Widya Robotics',
-            period: 'Jan 2025 – Present',
-            icon: '🤖',
-            highlights: [
-                'Led Vehicle Counting & Classification system for harbor operations',
-                'Guided Fertilizer Bag Counting AI project from concept to deployment',
-                'Mentored teams and collaborating across AI, full-stack development, datasets, and PM functions'
-            ]
-        },
-        {
-            title: 'Indie Developer / Founder',
-            company: 'Independent Projects',
-            period: '2022 – Present',
-            icon: '💡',
-            highlights: [
-                'Notespark.id: AI-powered study companion (LLM, RAG, Next.js, Golang, React Native)',
-                'FastPDF.net: WASM-based all-in-one PDF & file conversion tools',
-                'Built & maintained a medical SaaS product used by a clinic for 2+ years'
-            ]
-        },
-        {
-            title: 'Co-Founder & CTO',
-            company: 'INFIDEA.ID',
-            period: 'Dec 2020 – 2024',
-            icon: '🏢',
-            highlights: [
-                'Delivered AI/ML, optimization, and SaaS projects across industries',
-                'MillionRobo: Auto-trading platform (websocket, pubsub)',
-                'NextSci: Optimization algorithms for routing, bin packing, and scheduling',
-                'Delivered ML features including Text-to-Speech, Object Detection, OCR, and Crowd Counting'
-            ]
-        },
-        {
-            title: 'Data Scientist',
-            company: 'AZIMA',
-            period: 'Jan 2020 – Dec 2020',
-            icon: '📊',
-            highlights: [
-                'Built recommendation systems, route optimization, product mapping, and chatbots',
-                'Developed custom NLU for retail chatbot'
-            ]
-        },
-        {
-            title: 'Data Scientist',
-            company: 'DATANEST',
-            period: 'Jul 2019 – Dec 2020',
-            icon: '📈',
-            highlights: [
-                'Solved optimization problems (VRP, bin-packing, constraint programming)',
-                'Built predictive features for Demand AI (forecasting, recommendations)'
-            ]
-        },
-        {
-            title: 'Data Scientist',
-            company: 'Sorabel (by Sale Stock)',
-            period: 'Mar 2019 – Jun 2019',
-            icon: '🛍️',
-            highlights: [
-                'Worked on Market Basket Analysis and Search Recommendations'
-            ]
-        }
-    ]
-
     return (
         <div className="flex min-h-screen items-start justify-center bg-[#B9F8FE] px-4 py-12 font-sans">
             <div className="flex w-full max-w-3xl flex-col gap-8">
                 <header>
-                    <Link
-                        href="/"
-                        className="inline-flex items-center gap-2 text-black/60 hover:text-black mb-6 font-semibold transition-colors"
-                    >
-                        <span>←</span>
-                        <span>Back to Home</span>
-                    </Link>
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+                        <Link
+                            href="/"
+                            className="inline-flex items-center gap-2 text-black/60 hover:text-black font-semibold transition-colors w-fit"
+                        >
+                            <span>←</span>
+                            <span>Back to Home</span>
+                        </Link>
+                        <DownloadCV />
+                    </div>
                     <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-black">
                         Professional Experience
                     </h1>
-                    <p className="mt-3 max-w-2xl text-sm sm:text-base text-black/80">
-                        Engineering Leader with <strong>6+ years</strong> of experience in <strong>Software Engineering, Artificial Intelligence, and Full Stack Development</strong>. Proven ability to design and deliver scalable products, lead cross-functional teams, and deploy AI-driven solutions into production.
-                    </p>
+                    <p className="mt-3 max-w-2xl text-sm sm:text-base text-black/80" dangerouslySetInnerHTML={{
+                        // Using split to bold specific parts if needed, or just rendering the summary directly if we accept it's just a string.
+                        // However, the original had <strong> tags. Let's try to preserve that if possible or just use the string.
+                        // The user wanted "json like object", extracting formatting might be tricky.
+                        // For now I will use the plain summary from CVData or try to reconstruct the formatting if I can.
+                        // The original was: Engineering Leader with <strong>6+ years</strong> of experience in <strong>Software Engineering, Artificial Intelligence, and Full Stack Development</strong>.
+                        // I will put the string in CVData but if I need HTML, I might need to change how I store it or render it.
+                        // Let's render it as is for now, maybe finding the keywords to bold is overkill.
+                        // Wait, I can just hardcode the styling part if the text matches, OR store the HTML in the constant.
+                        // Storing HTML in constant is easier for now.
+                        __html: CVData.personalInfo.summary.replace('6+ years', '<strong>6+ years</strong>').replace('Software Engineering, Artificial Intelligence, and Full Stack Development', '<strong>Software Engineering, Artificial Intelligence, and Full Stack Development</strong>')
+                    }} />
                 </header>
 
                 <div className="flex flex-col gap-6">
-                    {experiences.map((exp, index) => (
+                    {CVData.experiences.map((exp, index) => (
                         <ExperienceItem key={index} {...exp} />
                     ))}
                 </div>
@@ -148,38 +84,12 @@ export default function Experiences() {
                 <div className="bg-gradient-to-br from-[#FFE5B4] to-[#FFD700] border-[3px] border-black rounded-2xl p-6 sm:p-8 shadow-[6px_6px_0_0_rgba(0,0,0,1)]">
                     <h2 className="text-2xl sm:text-3xl font-extrabold text-black mb-6">Technical Skills</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <h3 className="font-bold text-black mb-2">Backend & APIs</h3>
-                            <p className="text-sm text-black/80">REST, Gin, Flask, FastAPI, NestJS, scalable microservices</p>
-                        </div>
-                        <div>
-                            <h3 className="font-bold text-black mb-2">Cloud & Infra</h3>
-                            <p className="text-sm text-black/80">AWS, GCP, Kubernetes, Docker, Cloud Run, Lambda</p>
-                        </div>
-                        <div>
-                            <h3 className="font-bold text-black mb-2">Databases</h3>
-                            <p className="text-sm text-black/80">SQL, BigQuery</p>
-                        </div>
-                        <div>
-                            <h3 className="font-bold text-black mb-2">DevOps</h3>
-                            <p className="text-sm text-black/80">CI/CD with GitHub Actions, GitLab CI</p>
-                        </div>
-                        <div>
-                            <h3 className="font-bold text-black mb-2">AI/ML</h3>
-                            <p className="text-sm text-black/80">RAG, NLP, Computer Vision (CV), Generative AI, full ML lifecycle deployment</p>
-                        </div>
-                        <div>
-                            <h3 className="font-bold text-black mb-2">Frontend & Mobile</h3>
-                            <p className="text-sm text-black/80">React, React Native, Next.js</p>
-                        </div>
-                        <div>
-                            <h3 className="font-bold text-black mb-2">Languages</h3>
-                            <p className="text-sm text-black/80">Python, Go, JavaScript/TypeScript, Node.js, C/C++, R, MATLAB, Fortran</p>
-                        </div>
-                        <div>
-                            <h3 className="font-bold text-black mb-2">Leadership</h3>
-                            <p className="text-sm text-black/80">Team coaching, mentoring, hiring, cross-functional collaboration</p>
-                        </div>
+                        {CVData.skills.map((skill, index) => (
+                            <div key={index}>
+                                <h3 className="font-bold text-black mb-2">{skill.category}</h3>
+                                <p className="text-sm text-black/80">{skill.items}</p>
+                            </div>
+                        ))}
                     </div>
                 </div>
 
@@ -187,14 +97,12 @@ export default function Experiences() {
                 <div className="bg-white border-[3px] border-black rounded-2xl p-6 sm:p-8 shadow-[6px_6px_0_0_rgba(0,0,0,1)]">
                     <h2 className="text-2xl sm:text-3xl font-extrabold text-black mb-6">Education</h2>
                     <div className="space-y-4">
-                        <div>
-                            <h3 className="text-lg font-bold text-black">Imperial College London</h3>
-                            <p className="text-sm text-black/70">MSc Physics (Computational & Solar Cells), GPA 3.7</p>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-bold text-black">Universitas Gadjah Mada</h3>
-                            <p className="text-sm text-black/70">BSc Physics (Theoretical & Computational), GPA 3.66</p>
-                        </div>
+                        {CVData.education.map((edu, index) => (
+                            <div key={index}>
+                                <h3 className="text-lg font-bold text-black">{edu.school}</h3>
+                                <p className="text-sm text-black/70">{edu.degree}, {edu.grade}</p>
+                            </div>
+                        ))}
                     </div>
                 </div>
 
@@ -204,36 +112,18 @@ export default function Experiences() {
                         Publications & Open Source
                     </h3>
                     <ul className="space-y-2">
-                        <li className="text-sm text-black/80">
-                            • <Link
-                                href="https://towardsdatascience.com/recommendation-system-part-1-use-of-collaborative-filtering-and-hybrid-collaborative-content-in-6137ba64ad58"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="underline hover:text-black transition-colors"
-                            >
-                                Recommendation System Article
-                            </Link>
-                        </li>
-                        <li className="text-sm text-black/80">
-                            • <Link
-                                href="https://medium.com/@sirlcern3/high-performance-and-reliable-market-basket-analysis-using-item-to-item-collaborative-filtering-81e24cbf40d2"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="underline hover:text-black transition-colors"
-                            >
-                                Market Basket Analysis
-                            </Link>
-                        </li>
-                        <li className="text-sm text-black/80">
-                            • <Link
-                                href="https://pypi.org/project/pyasrule/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="underline hover:text-black transition-colors"
-                            >
-                                PyAsRule – Association Rule Library
-                            </Link>
-                        </li>
+                        {CVData.publications.map((pub, index) => (
+                            <li key={index} className="text-sm text-black/80">
+                                • <Link
+                                    href={pub.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="underline hover:text-black transition-colors"
+                                >
+                                    {pub.label}
+                                </Link>
+                            </li>
+                        ))}
                     </ul>
                 </div>
             </div>
