@@ -1,0 +1,58 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+
+export const article = {
+  author: 'Norma Dani Risdiandita',
+  date: '2026-01-21',
+  title: 'My Personal Tech Stack',
+  description:
+    'This article will be updated every time I change my tech stack.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+In this article, I will document the evolution of my personal tech stack and the principles guiding its growth over time.
+
+Recently, I've been exploring alternatives to Next.js due to its increasingly sluggish performance. My search was prompted by an article from plane.so detailing their migration from Next.js to Vite, which resulted in a
+ significant boost in speed—reducing hot reload times from 20-30 seconds down to mere milliseconds.
+
+I will document my journey in finding the right tools for my needs and the principles guiding my choices.
+
+
+## Frontend and Tech stack 
+SEO was a major factor in my choice of frontend stack. At the time, Next.js felt like the perfect candidate because it offered server-side rendering and static site generation out of the box, which I found incredibly impressive. However, over time, local development became increasingly painful. It’s slow—unbearably slow. Even with 32 GB of RAM, hot reloading in Next.js struggles to perform well, and that has become extremely frustrating.
+
+
+Because of Next.js’s slowness, I found Vite with React to be a much better fit for my workflow, so I went back to plain React. However, traditional React applications rely heavily on client-side rendering, which creates SEO challenges. That led me to look for alternatives. Frameworks like Astro offer excellent SEO support, so I’m now considering separating concerns: using a dedicated, SEO-focused stack for the landing and marketing pages, and a different stack for the application itself, such as the dashboard and backend-facing UI.
+
+One thing I really liked about using Next.js was its authentication ecosystem. I previously used Auth.js (it was Next Auth back then) and later switched to BetterAuth. However, after moving to Vite with React, I no longer use those solutions, which means I now need to build a dedicated authentication system myself in Golang.
+
+That said, I don’t require a very complex authentication setup. For my B2C apps, Google authentication alone is sufficient. My plan is to reimplement the authentication flow in Golang using Google Sign-In. This approach should be secure, since most of the heavy lifting is handled by Google itself.
+
+For routing, I plan to use TanStack Router, and for data fetching and state management, I’ll use TanStack Query.
+
+### Final Verdict: 
+- Landing Pages and Marketing Pages: Astro.js
+- Dashboard Frontend: React with Vite
+- Authentication: Google Sign-In with Golang following google auth guide
+- Routing: TanStack Router
+- Data Fetching and State Management: TanStack Query
+- UI: Shadcn UI
+- UI Management and UI System Design: StoryBook
+- Global State Management: Zustand 
+
+# Backend 
+
+I initially started with an all-in-one setup using Next.js, with a bit of Golang mixed in. Most of the business logic and APIs were handled directly in Next.js. However, when it came to AI workloads and long-running tasks, I realized I needed to separate concerns—Next.js alone wasn’t sufficient.
+
+As a result, I built a dedicated Golang service, which performs exceptionally well on Google Cloud Run thanks to its fast cold starts. That setup has worked very well for me. Going forward, I plan to fully separate responsibilities by moving the backend entirely to Golang and no longer relying on Next.js for backend concerns.
+
+
+### Final Verdict 
+- Programming Language: Golang
+- 
