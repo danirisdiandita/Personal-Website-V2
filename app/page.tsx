@@ -124,7 +124,7 @@ export default async function Home() {
               Things I've Built & Led
             </h2>
             <Link
-              href="/projects"
+              href="/products"
               className="text-xs font-semibold uppercase tracking-[0.2em] text-black underline underline-offset-4"
             >
               See more
