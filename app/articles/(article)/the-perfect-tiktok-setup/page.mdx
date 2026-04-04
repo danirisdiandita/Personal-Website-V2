@@ -1,0 +1,40 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import { TiktokChecklist } from '@/components/TiktokChecklist'
+
+export const article = {
+  author: 'Norma Dani Risdiandita',
+  date: '2026-04-05',
+  title: 'My Experience: The Perfect TikTok Setup for US Audiences',
+  description:
+    'How I successfully set up a TikTok account to target US viewers from overseas using a clean device and VektaVPN.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+Setting up a TikTok account that actually hits the US "For You Page" (FYP) when you're physically located elsewhere is a notorious challenge. I spent quite some time researching the right way to do it without getting shadowbanned or stuck in my local region's feed.
+
+The common methods—just using a random VPN or changing the region in settings—simply don't work anymore. TikTok's detection is extremely sophisticated; they check your SIM card, GPS, and even the "cleanliness" of your device.
+
+After trial and error, I found that the only reliable way is to treat the phone as a dedicated US device. I used a guide from VektaVPN and adapted it to my own workflow.
+
+### The Problem with Most Setups
+1. **SIM Detection**: If you have a local SIM card inserted, TikTok will ignore your VPN and lock you to your local region.
+2. **IP Quality**: Using a public VPN IP often leads to instant shadowbans because thousands of others are using the same "dirty" IPs.
+3. **Device Fingerprinting**: If the phone was previously used for a local account, traces remain even after a logout.
+
+### My Step-by-Step Workflow
+I used a spare iPhone exclusively for this. The key was to ensure the device never "knew" it was outside the US. I specifically used **VektaVPN** because it provides an unshared Residential IP, which is crucial to avoid being flagged as a "bot" or "VPN user".
+
+I've put together this interactive checklist based on the exact steps I followed. If you're building an app or looking to reach a US audience, this is the most reliable setup I've found so far.
+
+<TiktokChecklist />
+
+### Final Thoughts
+The "Warm-Up" period (Phase 6) is actually the most critical part. I was tempted to start posting immediately, but spending those 2-3 days just browsing and engaging naturally really makes a difference in how TikTok categorizes your account.
+
+Once the setup is done, your phone essentially lives in the US. Every time I open TikTok on this device now, I'm greeted with US-based content, and my posts successfully reach that market. Hope this helps you get started!
