@@ -1,7 +1,12 @@
 
 import DownloadCV from '@/components/DownloadCV'
 import Link from 'next/link'
-import { CVData } from '@/constant/cv'
+import { CVData } from '@/constant/cv_2026_05_09'
+
+function linkify(text: string): string {
+    const urlRegex = /(https?:\/\/[^\s<>"]+)/g
+    return text.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener noreferrer" class="underline hover:text-black transition-colors">$1</a>')
+}
 
 interface ExperienceItemProps {
     title: string
@@ -33,7 +38,7 @@ function ExperienceItem({ title, company, period, highlights, icon }: Experience
                     {highlights.map((highlight, index) => (
                         <li key={index} className="flex items-start gap-3">
                             <span className="text-lg mt-0.5 flex-shrink-0">▸</span>
-                            <span className="text-sm sm:text-base text-black/80 leading-relaxed">{highlight}</span>
+                            <span className="text-sm sm:text-base text-black/80 leading-relaxed" dangerouslySetInnerHTML={{ __html: linkify(highlight) }} />
                         </li>
                     ))}
                 </ul>
@@ -61,16 +66,7 @@ export default function Experiences() {
                         Professional Experience
                     </h1>
                     <p className="mt-3 max-w-2xl text-sm sm:text-base text-black/80" dangerouslySetInnerHTML={{
-                        // Using split to bold specific parts if needed, or just rendering the summary directly if we accept it's just a string.
-                        // However, the original had <strong> tags. Let's try to preserve that if possible or just use the string.
-                        // The user wanted "json like object", extracting formatting might be tricky.
-                        // For now I will use the plain summary from CVData or try to reconstruct the formatting if I can.
-                        // The original was: Engineering Leader with <strong>6+ years</strong> of experience in <strong>Software Engineering, Artificial Intelligence, and Full Stack Development</strong>.
-                        // I will put the string in CVData but if I need HTML, I might need to change how I store it or render it.
-                        // Let's render it as is for now, maybe finding the keywords to bold is overkill.
-                        // Wait, I can just hardcode the styling part if the text matches, OR store the HTML in the constant.
-                        // Storing HTML in constant is easier for now.
-                        __html: CVData.personalInfo.summary.replace('6+ years', '<strong>6+ years</strong>').replace('Software Engineering, Artificial Intelligence, and Full Stack Development', '<strong>Software Engineering, Artificial Intelligence, and Full Stack Development</strong>')
+                        __html: linkify(CVData.personalInfo.summary)
                     }} />
                 </header>
 
