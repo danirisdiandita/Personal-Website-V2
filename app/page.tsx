@@ -134,7 +134,7 @@ export default async function Home() {
             {latestProjects.map((project) => (
               <Link
                 key={project.slug}
-                href="/projects"
+                href="/products"
                 className={`rounded-2xl border-[3px] border-black ${project.colorClass} p-4 shadow-[6px_6px_0_0_rgba(0,0,0,1)] flex flex-col gap-3 hover:-translate-y-1 hover:shadow-[8px_8px_0_0_rgba(0,0,0,1)] transition-all`}
               >
                 <div className="flex items-start justify-between gap-2">
