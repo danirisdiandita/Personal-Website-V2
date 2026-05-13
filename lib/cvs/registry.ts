@@ -1,4 +1,4 @@
-'use client'
+
 import { cv as defaultCV } from './2026-05-13/default/cv'
 import { cv as roeblingCV } from './2026-05-13/roebling/cv'
 import { cv as vrchatCV } from './2026-05-13/vrchat/cv'
