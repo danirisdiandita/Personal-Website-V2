@@ -1,6 +1,6 @@
 import { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, ExternalHyperlink, TabStopType, BorderStyle } from "docx";
 import { saveAs } from "file-saver";
-import { CVData } from "@/app/job-posting/cvs/types";
+import { CVData } from "@/lib/cvs/types";
 import { CVData as DefaultCVData } from "@/constant/cv";
 
 export const downloadCVDocx = async (cvData?: CVData) => {

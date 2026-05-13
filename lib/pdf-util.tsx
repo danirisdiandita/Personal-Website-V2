@@ -1,7 +1,7 @@
 import React from 'react';
 import { Page, Text, View, Document, StyleSheet, pdf, Link } from '@react-pdf/renderer';
 import { saveAs } from 'file-saver';
-import { CVData } from '@/app/job-posting/cvs/types';
+import { CVData } from '@/lib/cvs/types';
 import { CVData as DefaultCVData } from '@/constant/cv';
 
 // Register a font (optional, but good for consistent look)
