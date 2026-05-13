@@ -3,8 +3,8 @@
 import DownloadCV from '@/components/DownloadCV'
 import Link from 'next/link'
 import { useState, useMemo, useEffect, useCallback } from 'react'
-import { CVData } from '@/app/applications/cvs/types'
-import { cvRegistry, getDates, getCompanies, getCV } from '@/app/applications/cvs/registry'
+import { CVData } from '@/app/job-posting/cvs/types'
+import { cvRegistry, getDates, getCompanies, getCV } from '@/app/job-posting/cvs/registry'
 
 function linkify(text: string): string {
     const urlRegex = /(https?:\/\/[^\s<>"]+)/g
