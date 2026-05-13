@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { Spinner } from '@/components/ui/spinner'
 import { toast } from 'sonner'
-import { CVData } from '@/lib/cvs/types'
+import { CVData } from '@/lib/cv-types'
 
 interface DownloadCVButtonProps {
     format: 'PDF' | 'DOCX'

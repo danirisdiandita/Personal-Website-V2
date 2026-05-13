@@ -40,4 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 /tmp
-# /app/job-posting
+/app/job-posting
+/lib/cvs
