@@ -4,7 +4,7 @@ import DownloadCV from '@/components/DownloadCV'
 import Link from 'next/link'
 import { useState, useMemo, useEffect, useCallback } from 'react'
 import { CVData } from '@/lib/cvs/types'
-import { cvRegistry, getDates, getCompanies, getCV } from '@/lib/cvs/registry'
+import { CvRegistry, GetDates, GetCompanies, GetCV } from '@/lib/cvs/registry'
 
 function linkify(text: string): string {
     const urlRegex = /(https?:\/\/[^\s<>"]+)/g
@@ -51,11 +51,11 @@ function ExperienceItem({ title, company, period, highlights, icon }: Experience
 }
 
 export default function Experiences() {
-    const dates = useMemo(() => getDates(), [])
+    const dates = useMemo(() => GetDates(), [])
     const [selectedDate, setSelectedDate] = useState<string>(dates[0] || '')
     const [selectedCompany, setSelectedCompany] = useState<string>('')
 
-    const companies = useMemo(() => getCompanies(selectedDate), [selectedDate])
+    const companies = useMemo(() => GetCompanies(selectedDate), [selectedDate])
 
     // Submission checklist — persisted in localStorage
     const SUBMISSION_KEY = 'cv-submissions'
@@ -66,7 +66,7 @@ export default function Experiences() {
             const raw = localStorage.getItem(SUBMISSION_KEY)
             const merged = raw ? new Set<string>(JSON.parse(raw)) : new Set<string>()
             // Always merge registry entries that have submitted: true
-            cvRegistry.forEach(entry => {
+            CvRegistry.forEach(entry => {
                 if (entry.submitted) merged.add(`${entry.date}/${entry.company}`)
             })
             setSubmitted(merged)
@@ -105,11 +105,11 @@ export default function Experiences() {
 
     const selectedCV: CVData | undefined = useMemo(() => {
         if (!selectedDate || !selectedCompany) return undefined
-        const entry = getCV(selectedDate, selectedCompany)
+        const entry = GetCV(selectedDate, selectedCompany)
         return entry?.cv
     }, [selectedDate, selectedCompany])
 
-    const cvData: CVData = selectedCV || cvRegistry[0]?.cv || {
+    const cvData: CVData = selectedCV || CvRegistry[0]?.cv || {
         personalInfo: { name: '', title: '', summary: '' },
         experiences: [],
         education: [],
@@ -141,7 +141,7 @@ export default function Experiences() {
                                     value={selectedDate}
                                     onChange={(e) => {
                                         setSelectedDate(e.target.value)
-                                        const newCompanies = getCompanies(e.target.value)
+                                        const newCompanies = GetCompanies(e.target.value)
                                         setSelectedCompany(newCompanies[0]?.company || '')
                                     }}
                                     className="w-full px-3 py-2 border-[3px] border-black rounded-lg text-sm font-semibold bg-white focus:outline-none focus:ring-2 focus:ring-[#FFE5B4] appearance-none cursor-pointer"
