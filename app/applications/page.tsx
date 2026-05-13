@@ -4,7 +4,7 @@ import DownloadCV from '@/components/DownloadCV'
 import Link from 'next/link'
 import { useState, useMemo, useEffect, useCallback } from 'react'
 import { CVData } from '@/app/applications/cvs/types'
-import { cvRegistry, getDates, getCompanies, getCV } from '../applications/cvs/registry'
+import { cvRegistry, getDates, getCompanies, getCV } from '@/app/applications/cvs/registry'
 
 function linkify(text: string): string {
     const urlRegex = /(https?:\/\/[^\s<>"]+)/g
@@ -173,8 +173,8 @@ export default function Experiences() {
                                 <button
                                     onClick={toggleSubmitted}
                                     className={`flex items-center gap-2 px-4 py-2 border-[3px] border-black rounded-lg text-sm font-bold shadow-[3px_3px_0_0_rgba(0,0,0,1)] hover:shadow-[1px_1px_0_0_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] active:shadow-none active:translate-x-[3px] active:translate-y-[3px] transition-all ${isCurrentSubmitted
-                                            ? 'bg-[#4ECDC4] text-black'
-                                            : 'bg-[#FFE5B4] text-black'
+                                        ? 'bg-[#4ECDC4] text-black'
+                                        : 'bg-[#FFE5B4] text-black'
                                         }`}
                                 >
                                     <span className="text-lg">{isCurrentSubmitted ? '✅' : '📋'}</span>
@@ -191,8 +191,8 @@ export default function Experiences() {
                                         Application Tracker
                                     </span>
                                     <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${submittedCount === totalCount
-                                            ? 'bg-[#4ECDC4] text-black'
-                                            : 'bg-[#FFE5B4] text-black'
+                                        ? 'bg-[#4ECDC4] text-black'
+                                        : 'bg-[#FFE5B4] text-black'
                                         }`}>
                                         {submittedCount}/{totalCount}
                                     </span>
