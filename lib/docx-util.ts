@@ -1,8 +1,10 @@
 import { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, ExternalHyperlink, TabStopType, BorderStyle } from "docx";
 import { saveAs } from "file-saver";
-import { CVData } from "@/constant/cv";
+import { CVData } from "@/app/applications/cvs/types";
+import { CVData as DefaultCVData } from "@/constant/cv";
 
-export const downloadCVDocx = async () => {
+export const downloadCVDocx = async (cvData?: CVData) => {
+    const data = cvData || DefaultCVData as unknown as CVData;
     // Document Styles
     const doc = new Document({
         styles: {
@@ -68,7 +70,7 @@ export const downloadCVDocx = async () => {
             children: [
                 // Header
                 new Paragraph({
-                    text: CVData.personalInfo.name,
+                    text: data.personalInfo.name,
                     heading: HeadingLevel.HEADING_1,
                     alignment: AlignmentType.CENTER
                 }),
@@ -77,11 +79,11 @@ export const downloadCVDocx = async () => {
                         color: "666666",
                         italics: true
                     },
-                    text: CVData.personalInfo.title,
+                    text: data.personalInfo.title,
                     alignment: AlignmentType.CENTER
                 }),
                 new Paragraph({
-                    text: CVData.personalInfo.summary,
+                    text: data.personalInfo.summary,
                     alignment: AlignmentType.CENTER,
                     spacing: {
                         after: 300
@@ -93,7 +95,7 @@ export const downloadCVDocx = async () => {
                     text: "Professional Experience",
                     heading: HeadingLevel.HEADING_2
                 }),
-                ...CVData.experiences.flatMap(exp => [
+                ...data.experiences.flatMap(exp => [
                     new Paragraph({
                         children: [
                             new TextRun({ text: exp.title, bold: true, size: 24 }),
@@ -126,7 +128,7 @@ export const downloadCVDocx = async () => {
                     text: "Technical Skills",
                     heading: HeadingLevel.HEADING_2
                 }),
-                ...CVData.skills.map(skill =>
+                ...data.skills.map(skill =>
                     new Paragraph({
                         children: [
                             new TextRun({ text: `${skill.category}: `, bold: true }),
@@ -141,7 +143,7 @@ export const downloadCVDocx = async () => {
                     text: "Education",
                     heading: HeadingLevel.HEADING_2
                 }),
-                ...CVData.education.map(edu =>
+                ...data.education.map(edu =>
                     new Paragraph({
                         children: [
                             new TextRun({ text: edu.school, bold: true }),
@@ -157,7 +159,7 @@ export const downloadCVDocx = async () => {
                     text: "Publications & Open Source",
                     heading: HeadingLevel.HEADING_2
                 }),
-                ...CVData.publications.map(pub =>
+                ...data.publications.map(pub =>
                     new Paragraph({
                         children: [
                             new TextRun({ text: "• " }),
@@ -184,5 +186,5 @@ export const downloadCVDocx = async () => {
 
     // Generate and download
     const blob = await Packer.toBlob(doc);
-    saveAs(blob, "Dani_Risdiandita_CV.docx");
+    saveAs(blob, `${data.personalInfo.name.replace(/\s+/g, '_')}_CV.docx`);
 };

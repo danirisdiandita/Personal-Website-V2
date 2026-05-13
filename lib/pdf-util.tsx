@@ -1,7 +1,8 @@
 import React from 'react';
-import { Page, Text, View, Document, StyleSheet, Font, pdf, Link } from '@react-pdf/renderer';
+import { Page, Text, View, Document, StyleSheet, pdf, Link } from '@react-pdf/renderer';
 import { saveAs } from 'file-saver';
-import { CVData } from '@/constant/cv';
+import { CVData } from '@/app/applications/cvs/types';
+import { CVData as DefaultCVData } from '@/constant/cv';
 
 // Register a font (optional, but good for consistent look)
 // We'll use standard fonts for now to avoid complexity of loading custom font files
@@ -108,22 +109,23 @@ const styles = StyleSheet.create({
     },
 });
 
-export const downloadCVPdf = async () => {
+export const downloadCVPdf = async (cvData?: CVData) => {
+    const data = cvData || DefaultCVData as unknown as CVData;
     const MyDocument = (
         <Document>
             <Page size="A4" style={styles.page}>
                 {/* Header */}
                 <View style={styles.header}>
-                    <Text style={styles.name}>{CVData.personalInfo.name}</Text>
-                    <Text style={styles.title}>{CVData.personalInfo.title}</Text>
+                    <Text style={styles.name}>{data.personalInfo.name}</Text>
+                    <Text style={styles.title}>{data.personalInfo.title}</Text>
                     <Text style={styles.summary}>
-                        {CVData.personalInfo.summary}
+                        {data.personalInfo.summary}
                     </Text>
                 </View>
 
                 {/* Professional Experience */}
                 <Text style={styles.heading}>Professional Experience</Text>
-                {CVData.experiences.map((exp, index) => (
+                {data.experiences.map((exp, index) => (
                     <View key={index} style={styles.experienceItem}>
                         <View style={styles.experienceHeader}>
                             <Text style={styles.jobTitle}>
@@ -142,7 +144,7 @@ export const downloadCVPdf = async () => {
 
                 {/* Technical Skills */}
                 <Text style={styles.heading}>Technical Skills</Text>
-                {CVData.skills.map((skill, index) => (
+                {data.skills.map((skill, index) => (
                     <View key={index} style={styles.skillSection}>
                         <Text style={styles.skillItems}>
                             <Text style={styles.skillCategory}>{skill.category}: </Text>
@@ -153,7 +155,7 @@ export const downloadCVPdf = async () => {
 
                 {/* Education */}
                 <Text style={styles.heading}>Education</Text>
-                {CVData.education.map((edu, index) => (
+                {data.education.map((edu, index) => (
                     <View key={index} style={styles.educationItem}>
                         <Text style={{ fontSize: 10 }}>
                             <Text style={{ fontWeight: 'bold' }}>{edu.school}</Text> - {edu.degree} <Text style={{ fontStyle: 'italic' }}>({edu.grade})</Text>
@@ -163,7 +165,7 @@ export const downloadCVPdf = async () => {
 
                 {/* Publications */}
                 <Text style={styles.heading}>Publications & Open Source</Text>
-                {CVData.publications.map((pub, index) => (
+                {data.publications.map((pub, index) => (
                     <View key={index} style={styles.publicationItem}>
                         <Text style={{ fontSize: 10 }}>• </Text>
                         <Link src={pub.url} style={styles.link}>{pub.label}</Link>
@@ -174,5 +176,5 @@ export const downloadCVPdf = async () => {
     );
 
     const blob = await pdf(MyDocument).toBlob();
-    saveAs(blob, "Dani_Risdiandita_CV.pdf");
+    saveAs(blob, `${data.personalInfo.name.replace(/\s+/g, '_')}_CV.pdf`);
 };

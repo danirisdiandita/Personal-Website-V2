@@ -2,13 +2,16 @@
 import { useState } from 'react'
 import { Spinner } from '@/components/ui/spinner'
 import { toast } from 'sonner'
+import { CVData } from '@/app/applications/cvs/types'
+
 interface DownloadCVButtonProps {
     format: 'PDF' | 'DOCX'
     icon: string
     color: string
+    cvData?: CVData
 }
 
-function DownloadCVButton({ format, icon, color }: DownloadCVButtonProps) {
+function DownloadCVButton({ format, icon, color, cvData }: DownloadCVButtonProps) {
     const [isLoading, setIsLoading] = useState(false)
 
     return (
@@ -30,7 +33,7 @@ function DownloadCVButton({ format, icon, color }: DownloadCVButtonProps) {
                     setIsLoading(true);
                     try {
                         const { downloadCVDocx } = await import('@/lib/docx-util');
-                        await downloadCVDocx();
+                        await downloadCVDocx(cvData);
                         toast.success("CV DOCX Downloaded Successfully!", {
                             position: "top-center",
                             style: {
@@ -61,7 +64,7 @@ function DownloadCVButton({ format, icon, color }: DownloadCVButtonProps) {
                     setIsLoading(true);
                     try {
                         const { downloadCVPdf } = await import('@/lib/pdf-util');
-                        await downloadCVPdf();
+                        await downloadCVPdf(cvData);
                         toast.success("CV PDF Downloaded Successfully!", {
                             position: "top-center",
                             style: {
@@ -97,13 +100,13 @@ function DownloadCVButton({ format, icon, color }: DownloadCVButtonProps) {
     )
 }
 
-export default function DownloadCV() {
+export default function DownloadCV({ cvData }: { cvData?: CVData }) {
     return (
         <div className="flex flex-wrap gap-4 items-center">
             <span className="font-bold text-black uppercase tracking-tight hidden sm:block">Get my CV:</span>
             <div className="flex gap-3">
-                <DownloadCVButton format="PDF" icon="📄" color="#FF6B6B" />   {/* Red-ish */}
-                <DownloadCVButton format="DOCX" icon="📝" color="#4ECDC4" /> {/* Teal-ish */}
+                <DownloadCVButton format="PDF" icon="📄" color="#FF6B6B" cvData={cvData} />
+                <DownloadCVButton format="DOCX" icon="📝" color="#4ECDC4" cvData={cvData} />
             </div>
         </div>
     )
