@@ -4,7 +4,7 @@ import DownloadCV from '@/components/DownloadCV'
 import Link from 'next/link'
 import { useState, useMemo, useEffect, useCallback } from 'react'
 import { CVData } from '@/app/applications/cvs/types'
-import { cvRegistry, getDates, getCompanies, getCV } from '@/app/applications/cvs/registry'
+import { cvRegistry, getDates, getCompanies, getCV } from '../applications/cvs/registry'
 
 function linkify(text: string): string {
     const urlRegex = /(https?:\/\/[^\s<>"]+)/g
@@ -172,11 +172,10 @@ export default function Experiences() {
                             <div className="flex items-center justify-between gap-3 mb-4">
                                 <button
                                     onClick={toggleSubmitted}
-                                    className={`flex items-center gap-2 px-4 py-2 border-[3px] border-black rounded-lg text-sm font-bold shadow-[3px_3px_0_0_rgba(0,0,0,1)] hover:shadow-[1px_1px_0_0_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] active:shadow-none active:translate-x-[3px] active:translate-y-[3px] transition-all ${
-                                        isCurrentSubmitted
+                                    className={`flex items-center gap-2 px-4 py-2 border-[3px] border-black rounded-lg text-sm font-bold shadow-[3px_3px_0_0_rgba(0,0,0,1)] hover:shadow-[1px_1px_0_0_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] active:shadow-none active:translate-x-[3px] active:translate-y-[3px] transition-all ${isCurrentSubmitted
                                             ? 'bg-[#4ECDC4] text-black'
                                             : 'bg-[#FFE5B4] text-black'
-                                    }`}
+                                        }`}
                                 >
                                     <span className="text-lg">{isCurrentSubmitted ? '✅' : '📋'}</span>
                                     <span>{isCurrentSubmitted ? 'Submitted' : 'Mark as Submitted'}</span>
@@ -191,11 +190,10 @@ export default function Experiences() {
                                     <span className="text-xs font-bold text-black/60 uppercase tracking-wider">
                                         Application Tracker
                                     </span>
-                                    <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${
-                                        submittedCount === totalCount
+                                    <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${submittedCount === totalCount
                                             ? 'bg-[#4ECDC4] text-black'
                                             : 'bg-[#FFE5B4] text-black'
-                                    }`}>
+                                        }`}>
                                         {submittedCount}/{totalCount}
                                     </span>
                                 </div>
@@ -212,9 +210,8 @@ export default function Experiences() {
                                                     }
                                                     persistSubmissions(next)
                                                 }}
-                                                className={`w-5 h-5 border-[2px] border-black rounded flex-shrink-0 flex items-center justify-center transition-colors ${
-                                                    s.submitted ? 'bg-[#4ECDC4]' : 'bg-white hover:bg-[#FFE5B4]'
-                                                }`}
+                                                className={`w-5 h-5 border-[2px] border-black rounded flex-shrink-0 flex items-center justify-center transition-colors ${s.submitted ? 'bg-[#4ECDC4]' : 'bg-white hover:bg-[#FFE5B4]'
+                                                    }`}
                                             >
                                                 {s.submitted && <span className="text-xs">✓</span>}
                                             </button>
@@ -223,9 +220,8 @@ export default function Experiences() {
                                                     setSelectedDate(selectedDate)
                                                     setSelectedCompany(s.company)
                                                 }}
-                                                className={`text-left hover:underline ${
-                                                    s.company === selectedCompany ? 'font-bold' : ''
-                                                } ${s.submitted ? 'line-through text-black/40' : 'text-black/80'}`}
+                                                className={`text-left hover:underline ${s.company === selectedCompany ? 'font-bold' : ''
+                                                    } ${s.submitted ? 'line-through text-black/40' : 'text-black/80'}`}
                                             >
                                                 {s.label}
                                             </button>
