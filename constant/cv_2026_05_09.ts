@@ -2,7 +2,7 @@ export const CVData = {
     "personalInfo": {
         "name": "Norma Dani Risdiandita",
         "title": "Senior Software Engineer",
-        "summary": "Senior Software Engineer with 6+ years of experience in Full Stack Development and Artificial Intelligence. Proven ability to lead cross-functional teams and design scalable, production-grade systems. Have built https://notespark.id (1000+ users), https://notulensi.id (18k+ users), https://transkripsi.id (85k+ users), and many more."
+        "summary": "Senior Software Engineer with 6+ years of experience in Full Stack Development and Artificial Intelligence. Proven ability to lead cross-functional teams and design scalable, production-grade systems. Have built https://notespark.id (1000+ users), https://notulensi.id (18k+ users), https://transkripsi.id (85k+ users), and Open Source ( https://github.com/danirisdiandita/Open-Brain )"
     },
     "experiences": [
         {
@@ -38,7 +38,8 @@ export const CVData = {
             "highlights": [
                 "Notespark.id: AI-powered study companion (LLM, RAG, Next.js, Golang, React Native) - Surpassed 1000 users and growing",
                 "FastPDF.net / https://nggakgitu.vercel.app: WASM-based all-in-one PDF & file conversion tools - fully client side PDF tools",
-                "Built & maintained a medical SaaS product used by a clinic for 2+ years"
+                "Built & maintained a medical SaaS product used by a clinic for 2+ years",
+                "OpenBrain: Open-source self-organizing wiki powered by LLM and RAG (alpha) — https://github.com/danirisdiandita/Open-Brain"
             ]
         },
         {
@@ -98,7 +99,8 @@ export const CVData = {
     "publications": [
         { "label": "Recommendation System Article", "url": "https://towardsdatascience.com/recommendation-system-part-1-use-of-collaborative-filtering-and-hybrid-collaborative-content-in-6137ba64ad58" },
         { "label": "Market Basket Analysis", "url": "https://medium.com/@sirlcern3/high-performance-and-reliable-market-basket-analysis-using-item-to-item-collaborative-filtering-81e24cbf40d2" },
-        { "label": "PyAsRule – Association Rule Library", "url": "https://pypi.org/project/pyasrule/" }
+        { "label": "PyAsRule – Association Rule Library", "url": "https://pypi.org/project/pyasrule/" },
+        { "label": "OpenBrain — Self-Organizing Wiki (OSS)", "url": "https://github.com/danirisdiandita/Open-Brain" }
     ],
     "skills": [
         { "category": "Backend & APIs", "items": "REST, Gin, Flask, FastAPI, NestJS, scalable microservices" },
