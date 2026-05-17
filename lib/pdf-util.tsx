@@ -169,6 +169,17 @@ export const downloadCVPdf = async (cvData?: CVData) => {
                     <View key={index} style={styles.publicationItem}>
                         <Text style={{ fontSize: 10 }}>• </Text>
                         <Link src={pub.url} style={styles.link}>{pub.label}</Link>
+                        <Text style={{ fontSize: 10, color: '#666666' }}> ({pub.url})</Text>
+                    </View>
+                ))}
+
+                {/* Links */}
+                <Text style={styles.heading}>Links</Text>
+                {data.links.map((link, index) => (
+                    <View key={index} style={styles.publicationItem}>
+                        <Text style={{ fontSize: 10 }}>• </Text>
+                        <Link src={link.url} style={styles.link}>{link.label}</Link>
+                        <Text style={{ fontSize: 10, color: '#666666' }}> ({link.url})</Text>
                     </View>
                 ))}
             </Page>

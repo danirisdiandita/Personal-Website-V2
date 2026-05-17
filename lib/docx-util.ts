@@ -179,6 +179,34 @@ export const downloadCVDocx = async (cvData?: CVData) => {
                             }),
                         ]
                     })
+                ),
+                new Paragraph({ text: "" }),
+
+                // Links
+                new Paragraph({
+                    text: "Links",
+                    heading: HeadingLevel.HEADING_2
+                }),
+                ...data.links.map(link =>
+                    new Paragraph({
+                        children: [
+                            new TextRun({ text: "• " }),
+                            new ExternalHyperlink({
+                                children: [
+                                    new TextRun({
+                                        text: link.label,
+                                        style: "Hyperlink",
+                                        color: "0563C1",
+                                        underline: {
+                                            type: "single",
+                                            color: "0563C1"
+                                        }
+                                    }),
+                                ],
+                                link: link.url,
+                            }),
+                        ]
+                    })
                 )
             ]
         }]

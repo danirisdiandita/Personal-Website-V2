@@ -111,5 +111,9 @@ export const CVDataRoot: CVData = {
         { category: "Languages", items: "Python, Go, Node.js, TypeScript/JavaScript, C/C++, R" },
         { category: "Compliance & Security", items: "GDPR, SOC 2, ISO 27001, security best practices, regulated environments" },
         { category: "Leadership", items: "Team scaling (3→15), hiring, mentoring, cross-functional collaboration, architecture design" }
+    ],
+    links: [
+        { label: "GitHub", url: "https://github.com/danirisdiandita" },
+        { label: "LinkedIn", url: "https://www.linkedin.com/in/risdiandita/" }
     ]
 }

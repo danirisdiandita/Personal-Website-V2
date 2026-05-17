@@ -292,6 +292,27 @@ export default function Experiences() {
                         ))}
                     </ul>
                 </div>
+
+                {/* Links */}
+                <div className="bg-white/40 border-[3px] border-black rounded-2xl p-6 shadow-[6px_6px_0_0_rgba(0,0,0,1)]">
+                    <h3 className="text-lg font-bold uppercase tracking-[0.1em] text-black mb-4">
+                        Links
+                    </h3>
+                    <ul className="space-y-2">
+                        {cvData.links.map((link, index) => (
+                            <li key={index} className="text-sm text-black/80">
+                                • <Link
+                                    href={link.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="underline hover:text-black transition-colors"
+                                >
+                                    {link.label}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         </div>
     )

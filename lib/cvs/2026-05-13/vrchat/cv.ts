@@ -112,5 +112,9 @@ export const cv: CVData = {
         { category: "DevOps & Tooling", items: "CI/CD with GitHub Actions, GitLab CI, third-party API integration" },
         { category: "Languages", items: "JavaScript/TypeScript, Node.js, Python, Go, C/C++, R" },
         { category: "Leadership", items: "Team coaching, mentoring, hiring, cross-functional collaboration" }
+    ],
+    links: [
+        { label: "GitHub", url: "https://github.com/danirisdiandita" },
+        { label: "LinkedIn", url: "https://www.linkedin.com/in/risdiandita/" }
     ]
 }

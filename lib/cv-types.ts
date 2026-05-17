@@ -24,6 +24,10 @@ export interface CVData {
         category: string
         items: string
     }[]
+    links: {
+        label: string
+        url: string
+    }[]
 }
 
 export interface CVEntry {

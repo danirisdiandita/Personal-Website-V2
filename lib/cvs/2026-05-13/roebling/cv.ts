@@ -112,5 +112,9 @@ export const cv: CVData = {
         { category: "DevOps & Tooling", items: "CI/CD (GitHub Actions, GitLab CI), Claude Code / Cursor AI-native development, observability" },
         { category: "Languages", items: "Python, Go, TypeScript/JavaScript, Node.js, C/C++, R" },
         { category: "Domain", items: "Physics (MSc), computational modeling, simulation, numerical methods, systems thinking" }
+    ],
+    links: [
+        { label: "GitHub", url: "https://github.com/danirisdiandita" },
+        { label: "LinkedIn", url: "https://www.linkedin.com/in/risdiandita/" }
     ]
 }

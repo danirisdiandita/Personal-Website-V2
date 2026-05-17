@@ -111,5 +111,9 @@ export const CVData = {
         { category: 'Frontend & Mobile', items: 'React, React Native, Next.js' },
         { category: 'Languages', items: 'Python, Go, JavaScript/TypeScript, Node.js, C/C++, R' },
         { category: 'Leadership', items: 'Team coaching, mentoring, hiring, cross-functional collaboration' }
+    ],
+    links: [
+        { label: 'GitHub', url: 'https://github.com/danirisdiandita' },
+        { label: 'LinkedIn', url: 'https://www.linkedin.com/in/risdiandita/' }
     ]
 }
