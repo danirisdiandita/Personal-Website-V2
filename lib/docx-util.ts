@@ -177,6 +177,7 @@ export const downloadCVDocx = async (cvData?: CVData) => {
                                 ],
                                 link: pub.url,
                             }),
+                            new TextRun({ text: ` (${pub.url})`, color: "666666", size: 20 }),
                         ]
                     })
                 ),
@@ -205,6 +206,7 @@ export const downloadCVDocx = async (cvData?: CVData) => {
                                 ],
                                 link: link.url,
                             }),
+                            new TextRun({ text: ` (${link.url})`, color: "666666", size: 20 }),
                         ]
                     })
                 )
