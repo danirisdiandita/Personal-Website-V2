@@ -1,11 +1,32 @@
 import { CVEntry } from '@/lib/cvs/types'
 import { CVDataRoot } from '@/constant/cv_root'
 import { CVDataAccesstime } from '@/constant/cv_accesstime'
+import { CVDataTradeify } from '@/constant/cv_tradeify'
+import { CVDataReveleer } from '@/constant/cv_reveleer'
+import { CVDataBunny } from '@/constant/cv_bunny'
 import { cv as defaultCV } from './2026-05-13/default/cv'
 import { cv as roeblingCV } from './2026-05-13/roebling/cv'
 import { cv as vrchatCV } from './2026-05-13/vrchat/cv'
 
 export const CvRegistry: CVEntry[] = [
+    {
+        company: 'bunny',
+        label: 'bunny.net — Staff Software Engineer (Magic Containers)',
+        date: '2026-05-18',
+        cv: CVDataBunny,
+    },
+    {
+        company: 'reveleer',
+        label: 'Reveleer — Full Stack AI Engineer',
+        date: '2026-05-18',
+        cv: CVDataReveleer,
+    },
+    {
+        company: 'tradeify',
+        label: 'Tradeify — Full Stack Engineer',
+        date: '2026-05-18',
+        cv: CVDataTradeify,
+    },
     {
         company: 'accesstime',
         label: 'Accesstime — Senior Full Stack Engineer',
