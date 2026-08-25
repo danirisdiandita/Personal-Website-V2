@@ -4,11 +4,25 @@ import { CVDataAccesstime } from '@/constant/cv_accesstime'
 import { CVDataTradeify } from '@/constant/cv_tradeify'
 import { CVDataReveleer } from '@/constant/cv_reveleer'
 import { CVDataBunny } from '@/constant/cv_bunny'
+import { CVDataSobelAI } from '@/constant/cv_sobelai'
+import { CVDataCoFab } from '@/constant/cv_cofab'
 import { cv as defaultCV } from './2026-05-13/default/cv'
 import { cv as roeblingCV } from './2026-05-13/roebling/cv'
 import { cv as vrchatCV } from './2026-05-13/vrchat/cv'
 
 export const CvRegistry: CVEntry[] = [
+    {
+        company: 'cofab',
+        label: 'CoFab — Founding Engineer',
+        date: '2026-05-18',
+        cv: CVDataCoFab,
+    },
+    {
+        company: 'sobelai',
+        label: 'SobelAI — Founding Engineer (Full-Stack / AI)',
+        date: '2026-05-18',
+        cv: CVDataSobelAI,
+    },
     {
         company: 'bunny',
         label: 'bunny.net — Staff Software Engineer (Magic Containers)',
