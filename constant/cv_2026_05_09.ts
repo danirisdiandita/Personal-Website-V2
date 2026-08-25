@@ -13,7 +13,7 @@ export const CVData = {
       icon: "🚀",
       highlights: [
         "Architected and launched core products: Transkripsi.id (85,805 registered users) and Widya Notulensi (17,015 registered users), achieving 99.9% uptime",
-        "Built secure, scalable infrastructure for real-time transcription, and diarization, fully compliant with GDPR, SOC2, and ISO 27001 standards",
+        "Built secure, scalable infrastructure for transcription, and diarization, fully compliant with GDPR, SOC2, and ISO 27001 standards",
         "Designed and implemented bot integrations for Zoom, Google Meet, and MS Teams, solving cold-start issues with Kubernetes and optimizing costs by migrating to Cloud Run Jobs",
         "Led the development of an AI-powered video editor, integrating generative avatars and a custom cloud rendering engine",
         "Developed AI automation tools for SEO content generation and social media content creation (TikTok/Instagram)",
