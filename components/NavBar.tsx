@@ -10,6 +10,7 @@ const NavBar = () => {
   const isArticles = pathname === "/articles" || pathname.startsWith("/articles/")
   const isProducts = pathname === "/products" || pathname.startsWith("/products/")
   const isExperiences = pathname === "/experiences" || pathname.startsWith("/experiences/")
+  const isTools = pathname === "/tools" || pathname.startsWith("/tools/")
 
   // Mobile: Simple stacked buttons style
   const mobileLinkClasses = (active: boolean) =>
@@ -39,6 +40,9 @@ const NavBar = () => {
         <Link href="/experiences" className={mobileLinkClasses(isExperiences)}>
           Experiences
         </Link>
+        <Link href="/tools" className={mobileLinkClasses(isTools)}>
+          Tools
+        </Link>
       </div>
 
       {/* Desktop Navigation - Original Style */}
@@ -66,6 +70,11 @@ const NavBar = () => {
             <li>
               <Link href="/experiences" className={desktopLinkClasses(isExperiences)}>
                 Experiences
+              </Link>
+            </li>
+            <li>
+              <Link href="/tools" className={desktopLinkClasses(isTools)}>
+                Tools
               </Link>
             </li>
           </ul>
