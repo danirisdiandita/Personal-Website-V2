@@ -3,7 +3,7 @@ export type Project = {
   title: string;
   description: string;
   domain?: string;
-  status: 'Running' | 'Pivot' | 'Discontinued';
+  status: 'Running' | 'Coming Soon' | 'Pivot' | 'Discontinued';
   techStack: string[];
   userCount?: string;
   year: string;
@@ -12,6 +12,17 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: "yuzu",
+    title: "Yuzu: Recipe & Meal Planner AI",
+    description: "A new mobile app. Coming soon to the App Store and Google Play.",
+    domain: "yuzu.danirisdiandita.com",
+    status: "Coming Soon",
+    techStack: ["Expo", "React Native", "Golang", "LLM", "Web Scraping"],
+    year: "2026",
+    colorClass: "bg-[#FFE59D]",
+    role: "Solo Builder"
+  },
   {
     slug: "notespark-ai",
     title: "NoteSpark AI - AI Study Companion",

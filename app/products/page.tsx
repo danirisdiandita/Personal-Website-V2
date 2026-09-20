@@ -1,23 +1,64 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import { projects } from "./data";
 
+const soloProjects = new Set([
+  "yuzu",
+  "notespark-ai",
+  "fast-pdf",
+  "rekam-medis",
+  "infidea-api-gateway",
+  "next-router",
+  "millionrobo",
+]);
+
+const tabs = ["Built Solo", "Lead + Individual Contributor", "All"] as const;
+
 export default function ProductsPage() {
-  const sorted = [...projects].sort((a, b) => (a.year < b.year ? 1 : -1));
+  const [selectedTab, setSelectedTab] = useState<(typeof tabs)[number]>("Built Solo");
+  const visibleProjects = projects.filter((project) =>
+    selectedTab === "All"
+      ? true
+      : selectedTab === "Built Solo"
+        ? soloProjects.has(project.slug)
+        : !soloProjects.has(project.slug)
+  );
 
   return (
     <div className="max-w-3xl mx-auto flex min-h-screen items-start justify-center bg-[#B9F8FE] px-4 py-12 font-sans">
       <div className="flex w-full max-w-5xl flex-col gap-8">
         <header>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-black">
-            Things I've Built & Led
+            Things I&apos;ve Built &amp; Led
           </h1>
           <p className="mt-3 max-w-2xl text-sm sm:text-base text-black/80">
-            Products I've built or led as a developer, product manager, and entrepreneur. Some are running, others discontinued—all part of learning and experimenting.
+            Products I&apos;ve built or led as a developer, product manager, and entrepreneur. Some are running, others discontinued—all part of learning and experimenting.
           </p>
         </header>
 
+        <div className="flex flex-wrap gap-2" role="tablist" aria-label="Product categories">
+          {tabs.map((tab) => (
+            <button
+              key={tab}
+              type="button"
+              role="tab"
+              aria-selected={selectedTab === tab}
+              onClick={() => setSelectedTab(tab)}
+              className={`cursor-pointer rounded-full border-[3px] border-black px-4 py-2 text-xs font-bold transition-transform hover:-translate-y-0.5 ${
+                selectedTab === tab
+                  ? "bg-black text-white shadow-[4px_4px_0_0_rgba(0,0,0,1)]"
+                  : "bg-white text-black"
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+
         <section className="grid gap-6 sm:grid-cols-2">
-          {projects.map((project) => (
+          {visibleProjects.map((project) => (
             <article
               key={project.slug}
               className={`rounded-2xl border-[3px] border-black ${project.colorClass} p-5 shadow-[6px_6px_0_0_rgba(0,0,0,1)] flex flex-col gap-4`}
@@ -89,4 +130,3 @@ export default function ProductsPage() {
     </div>
   );
 }
-
