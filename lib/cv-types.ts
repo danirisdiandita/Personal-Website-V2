@@ -3,6 +3,9 @@ export interface CVData {
         name: string
         title: string
         summary: string
+        email?: string
+        phone?: string
+        location?: string
     }
     experiences: {
         title: string
@@ -16,6 +19,8 @@ export interface CVData {
         degree: string
         grade: string
     }[]
+    projects?: { title: string; period: string; description: string; url?: string }[]
+    certifications?: string[]
     publications: {
         label: string
         url: string

@@ -1,0 +1,29 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Norma Dani Risdiandita',
+  date: '2026-01-01',
+  title: 'Article title',
+  description: 'A short description of the article.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+Write a short introduction that explains what this article is about.
+
+## First section
+
+Add the main content here.
+
+### Subsection
+
+Add supporting details, examples, or code snippets here.
+
+## Conclusion
+
+Summarize the key takeaway.

@@ -83,6 +83,10 @@ export const downloadCVDocx = async (cvData?: CVData) => {
                     alignment: AlignmentType.CENTER
                 }),
                 new Paragraph({
+                    text: [data.personalInfo.email, data.personalInfo.phone, data.personalInfo.location].filter(Boolean).join(' | '),
+                    alignment: AlignmentType.CENTER
+                }),
+                new Paragraph({
                     text: data.personalInfo.summary,
                     alignment: AlignmentType.CENTER,
                     spacing: {
@@ -123,6 +127,14 @@ export const downloadCVDocx = async (cvData?: CVData) => {
                     new Paragraph({ text: "" }) // Spacer
                 ]),
 
+                ...(data.projects?.length ? [
+                    new Paragraph({ text: 'Other Projects', heading: HeadingLevel.HEADING_2 }),
+                    ...data.projects.flatMap(project => [
+                        new Paragraph({ children: [new TextRun({ text: `${project.title} | ${project.period}`, bold: true })] }),
+                        new Paragraph({ text: `${project.description}${project.url ? ` ${project.url}` : ''}`, bullet: { level: 0 } }),
+                    ]),
+                ] : []),
+
                 // Technical Skills
                 new Paragraph({
                     text: "Technical Skills",
@@ -154,7 +166,13 @@ export const downloadCVDocx = async (cvData?: CVData) => {
                 ),
                 new Paragraph({ text: "" }),
 
-                // Publications
+                ...(data.certifications?.length ? [
+                    new Paragraph({ text: 'Certifications', heading: HeadingLevel.HEADING_2 }),
+                    ...data.certifications.map(cert => new Paragraph({ text: cert, bullet: { level: 0 } })),
+                    new Paragraph({ text: '' }),
+                ] : []),
+
+                ...(data.publications.length ? [
                 new Paragraph({
                     text: "Publications & Open Source",
                     heading: HeadingLevel.HEADING_2
@@ -182,6 +200,7 @@ export const downloadCVDocx = async (cvData?: CVData) => {
                     })
                 ),
                 new Paragraph({ text: "" }),
+                ] : []),
 
                 // Links
                 new Paragraph({

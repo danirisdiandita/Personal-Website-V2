@@ -76,6 +76,14 @@ export default function Experiences() {
                     ))}
                 </div>
 
+                {CVData.projects?.length ? <section className="bg-white border-[3px] border-black rounded-2xl p-6 sm:p-8 shadow-[6px_6px_0_0_rgba(0,0,0,1)]">
+                    <h2 className="text-2xl sm:text-3xl font-extrabold text-black mb-6">Projects</h2>
+                    <div className="space-y-5">{CVData.projects.map((project) => <div key={project.title}>
+                        <h3 className="font-bold text-black">{project.url ? <Link href={project.url} target="_blank" rel="noopener noreferrer" className="underline">{project.title}</Link> : project.title} <span className="font-normal text-black/60">· {project.period}</span></h3>
+                        <p className="text-sm text-black/80">{project.description}</p>
+                    </div>)}</div>
+                </section> : null}
+
                 {/* Technical Skills Summary */}
                 <div className="bg-gradient-to-br from-[#FFE5B4] to-[#FFD700] border-[3px] border-black rounded-2xl p-6 sm:p-8 shadow-[6px_6px_0_0_rgba(0,0,0,1)]">
                     <h2 className="text-2xl sm:text-3xl font-extrabold text-black mb-6">Technical Skills</h2>
@@ -102,8 +110,13 @@ export default function Experiences() {
                     </div>
                 </div>
 
+                {CVData.certifications?.length ? <section className="bg-white border-[3px] border-black rounded-2xl p-6 shadow-[6px_6px_0_0_rgba(0,0,0,1)]">
+                    <h2 className="text-xl font-extrabold text-black mb-3">Certifications</h2>
+                    <ul className="list-disc pl-5 text-sm text-black/80">{CVData.certifications.map((cert) => <li key={cert}>{cert}</li>)}</ul>
+                </section> : null}
+
                 {/* Publications */}
-                <div className="bg-white/40 border-[3px] border-black rounded-2xl p-6 shadow-[6px_6px_0_0_rgba(0,0,0,1)]">
+                {CVData.publications.length > 0 && <div className="bg-white/40 border-[3px] border-black rounded-2xl p-6 shadow-[6px_6px_0_0_rgba(0,0,0,1)]">
                     <h3 className="text-lg font-bold uppercase tracking-[0.1em] text-black mb-4">
                         Publications & Open Source
                     </h3>
@@ -121,7 +134,7 @@ export default function Experiences() {
                             </li>
                         ))}
                     </ul>
-                </div>
+                </div>}
 
                 {/* Links */}
                 <div className="bg-white/40 border-[3px] border-black rounded-2xl p-6 shadow-[6px_6px_0_0_rgba(0,0,0,1)]">

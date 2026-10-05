@@ -1,0 +1,58 @@
+﻿NORMA DANI RISDIANDITA
+Senior Software Engineer - Full-Stack & AI/ML
+norma.risdiandita@gmail.com  |  +62 813-2861-7302 |  www.linkedin.com/in/risdiandita  |  https://github.com/danirisdiandita  |  https://danirisdiandita.com  |  Yogyakarta, Indonesia 
+SUMMARY
+Senior Software Engineer and hands-on technology leader with 7+ years of experience building and shipping production AI and distributed systems. Deep experience across speech AI, RAG/NLP, computer vision, backend systems, Kubernetes, and cloud infrastructure (AWS/GCP), with systems serving 100K+ users. Combines hands-on engineering with system architecture, technical leadership, and client-facing delivery, owning complex products from design and model development through production deployment and optimization.
+PROFESSIONAL EXPERIENCE
+Senior Software Engineer / Founding Engineer / CTO  |  Widya Wicara        May 2022 – Present
+* Architected, built and launched Transkripsi.id and Widya Notulensi (https://notulensi.id), two production AI & LLM powered transcription products
+   * Serving 100K+ users at 99.9% uptime with > 1000 AI workloads per month
+   * Built production speech-to-text, meeting transcription, and multi-participant speaker diarization system with data encrypted in transit and at rest, and implemented versioning to preserve meeting-data integrity and provide tamper traceability.
+   * Shipped automated meeting-bot integrations for Zoom, Google Meet, and Microsoft Teams; migrated meeting-bot workloads from Kubernetes to Google Cloud Run Jobs, reducing bot latency join latency from 1-2 minutes and ultimately <30 seconds, while moving compute to an on-demand model that reduced idle infrastructure costs. 
+   * Tech: Next.js, NestJS, Python (flask, Pytorch, Wav2Vec, Speaker Embedding, Docker, Google Cloud Run Service, Google Cloud Run Job, Kubernetes
+* Architected and shipped additional AI products spanning conversational AI, text-to-speech, generative video, content automation, and media processing, working with models including Wav2Vec, Whisper, FastSpeech2, Parallel WaveGAN, and ESPnet2.
+* Built and led the engineering team through multiple headcount stages (peaking at 15, later restructured to a core team of 3), establishing hiring standards and a mentoring track from junior to senior. 
+Fractional CTO |  Widya Robotics & Widya Security        Jan 2025 – June 2026
+* Led technical presales and end-to-end delivery for AI projects across Widya Robotics, serving as the go-to technical owner from client discovery and solution architecture through implementation and production deployment; helped close and deliver multiple commercial AI projects.
+* Closed and delivered multiple commercial AI projects, including: 
+   * Led development of a RAG based clinical assistant of Skin Clinic doctors: chatbot recommendation based on internal documents and stock checking for each clinic
+   * Architected and delivered real time vehicle counting, classification, License Plate Recognition system for harbor operations, processing 5,000+ of vehicle detections per day using YOLO, MobileNetV3, PyTorch/TensorRT, FastAPI, RabbitMQ, and Docker. (Widya Robotics)
+   * Closed and led delivery of a real-time computer-vision system for fertilizer-bag counting, processing thousands of bags per day in production.  (Widya Robotics)
+* Led cybersecurity initiatives at Widya Security, including developing LLM-powered VAPT reporting platform that accelerated penetration-testing report generation.
+Senior Software Engineer / Co-Founder  |  Infidea.id          Dec 2020 – April 2022
+* Served as a client-facing technical lead and hands-on engineer for AI/ML projects, translating business requirements into production systems while mentoring junior engineers.
+* Owned the end-to-end ML lifecycle, from model training and experimentation through API integration, containerization, and production deployment using Docker and Kubernetes.
+* Delivered production Text-to-Speech, Object Detection, OCR, and Crowd Counting systems for a major telecommunications client.
+* Built MillionRobo, a real-time algorithmic trading platform using WebSocket and pub/sub architecture, and NextSci, an optimization engine for routing, bin-packing, and scheduling problems.
+
+
+Data Scientist & ML Engineer  |  Azima, Datanest & Sorabel        Mar 2019 – Dec 2020
+* At Azima, built an end-to-end conversational commerce and logistics system where customers ordered products via WhatsApp using text or images; implemented custom NLU and computer vision OCR for order-to-product mapping and VRP-based optimization for automated delivery routing.
+* At Datanest, built demand-forecasting and time-series models to predict when retail customers were likely to reorder, enabling sales teams to proactively prioritize and time customer outreach. 
+* At Sorabel: Developed market-basket analysis and search/recommendation models for fashion e-commerce.
+
+
+OTHER PROJECTS
+________________
+Indie Developer  |  Independent Projects        2022 – Present
+* NoteSpark AI (https://notespark.id) (2025-present) - Built and launched an AI study companion using LLMs, RAG, Next.js, Go, and React Native, reaching 1,700+ registered users across web and mobile.
+* FastPDF.net (2024) - Built a WASM-based, fully client-side PDF and file-conversion toolkit, keeping document processing entirely in the browser.
+* Medical SaaS (2020-present) - Built and maintained a production SaaS platform used continuously by a medical clinic for 2+ years.
+TECHNICAL SKILLS
+Languages: Python, Go, TypeScript/JavaScript, C/C++, R
+AI/ML: End-to-end from fine-tuning to production of ML systems including but not limited to Computer Vision, RAG, NLP, Generative AI
+ML Frameworks: Pytorch, Langchain, Tensorflow
+Backend & APIs: Go/Gin, Flask, FastAPI, Node.js, NestJS, microservices
+Cloud & Infra: AWS, GCP, Kubernetes, Docker, Cloud Run, AWS Lambda
+Frontend & Mobile: React, React Native, Next.js
+Data: SQL, BigQuery, PostgreSQL, Redis
+DevOps: CI/CD with GitHub Actions, GitLab CI
+Leadership: Technical Leadership, System Architecture, Technical Presales, Mentoring, Hiring, Cross-Functional collaboration
+CERTIFICATIONS
+* Certified Appsec Practitioner V2 (CAP) (May 2026)
+* ISO/IEC 27001:2022 Lead Implementer (April 2025) 
+
+
+EDUCATION
+Imperial College London — MSc Physics, Computational & Solar Cells (GPA 3.7) - (2017 - 2018)
+Universitas Gadjah Mada — BSc Physics, Theoretical & Computational (GPA 3.66) - (2011-2015)

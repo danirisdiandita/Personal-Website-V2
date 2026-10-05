@@ -118,6 +118,7 @@ export const downloadCVPdf = async (cvData?: CVData) => {
                 <View style={styles.header}>
                     <Text style={styles.name}>{data.personalInfo.name}</Text>
                     <Text style={styles.title}>{data.personalInfo.title}</Text>
+                    <Text style={{ fontSize: 9, marginBottom: 8 }}>{[data.personalInfo.email, data.personalInfo.phone, data.personalInfo.location].filter(Boolean).join(' | ')}</Text>
                     <Text style={styles.summary}>
                         {data.personalInfo.summary}
                     </Text>
@@ -142,6 +143,20 @@ export const downloadCVPdf = async (cvData?: CVData) => {
                     </View>
                 ))}
 
+                {!!data.projects?.length && <>
+                    <Text style={styles.heading}>Other Projects</Text>
+                    {data.projects.map((project, index) => <View key={index} style={styles.experienceItem}>
+                        <View style={styles.experienceHeader}>
+                            <Text style={styles.jobTitle}>{project.title}</Text>
+                            <Text style={styles.period}>{project.period}</Text>
+                        </View>
+                        <View style={styles.bulletPoint}>
+                            <Text style={styles.bullet}>•</Text>
+                            <Text style={styles.bulletText}>{project.description}</Text>
+                        </View>
+                    </View>)}
+                </>}
+
                 {/* Technical Skills */}
                 <Text style={styles.heading}>Technical Skills</Text>
                 {data.skills.map((skill, index) => (
@@ -163,23 +178,27 @@ export const downloadCVPdf = async (cvData?: CVData) => {
                     </View>
                 ))}
 
-                {/* Publications */}
+                {!!data.certifications?.length && <>
+                    <Text style={styles.heading}>Certifications</Text>
+                    {data.certifications.map((cert, index) => <Text key={index} style={{ fontSize: 10, marginBottom: 3 }}>• {cert}</Text>)}
+                </>}
+
+                {!!data.publications.length && <>
                 <Text style={styles.heading}>Publications & Open Source</Text>
                 {data.publications.map((pub, index) => (
                     <View key={index} style={styles.publicationItem}>
-                        <Text style={{ fontSize: 10 }}>• </Text>
+                        <Text style={{ fontSize: 10, marginRight: 3 }}>•</Text>
                         <Link src={pub.url} style={styles.link}>{pub.label}</Link>
-                        <Text style={{ fontSize: 10, color: '#666666' }}> ({pub.url})</Text>
                     </View>
                 ))}
+                </>}
 
                 {/* Links */}
                 <Text style={styles.heading}>Links</Text>
                 {data.links.map((link, index) => (
                     <View key={index} style={styles.publicationItem}>
-                        <Text style={{ fontSize: 10 }}>• </Text>
+                        <Text style={{ fontSize: 10, marginRight: 3 }}>•</Text>
                         <Link src={link.url} style={styles.link}>{link.label}</Link>
-                        <Text style={{ fontSize: 10, color: '#666666' }}> ({link.url})</Text>
                     </View>
                 ))}
             </Page>
