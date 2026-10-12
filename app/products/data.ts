@@ -9,19 +9,21 @@ export type Project = {
   year: string;
   colorClass: string;
   role?: string;
+  appStoreUrl?: string;
 };
 
 export const projects: Project[] = [
   {
     slug: "yuzu",
     title: "Yuzu: Recipe & Meal Planner AI",
-    description: "A new mobile app. Coming soon to the App Store and Google Play.",
+    description: "A recipe and meal planner mobile app powered by AI. Now available on the App Store.",
     domain: "yuzu.danirisdiandita.com",
-    status: "Coming Soon",
+    status: "Running",
     techStack: ["Expo", "React Native", "Golang", "LLM", "Web Scraping"],
     year: "2026",
     colorClass: "bg-[#FFE59D]",
-    role: "Solo Builder"
+    role: "Solo Builder",
+    appStoreUrl: "https://apps.apple.com/us/app/yuzu-recipe-meal-planner-ai/id6808936915"
   },
   {
     slug: "notespark-ai",

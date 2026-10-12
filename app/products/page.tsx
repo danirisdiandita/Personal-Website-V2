@@ -88,6 +88,18 @@ export default function ProductsPage() {
 
               <p className="text-xs text-black/80 leading-relaxed">{project.description}</p>
 
+              {project.appStoreUrl && (
+                <a
+                  href={project.appStoreUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="self-start"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/appstore-237.svg" alt="Download on the App Store" className="h-10 w-auto" />
+                </a>
+              )}
+
               <div className="flex flex-wrap gap-1.5">
                 {project.techStack.map((tech, idx) => (
                   <span
